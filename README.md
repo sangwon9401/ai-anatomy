@@ -104,7 +104,7 @@ adb install -r app/build/outputs/apk/debug/app-debug.apk
 
 ## 저작권과 출처
 
-© 2026 sangwon9401. 코드와 강의 콘텐츠의 모든 권리는 저작자에게 있어요. 보고 배우는 건 자유지만, 허락 없이 복제하거나 다른 곳에 배포할 수는 없어요.
+© 2026 sangwon9401. 코드와 강의 콘텐츠의 모든 권리는 저작자에게 있어요. **상업적 이용은 어떤 형태로든 금지**예요. 사이트로 배우고, 코드를 읽고, 링크를 공유하는 것은 자유지만, 그 밖의 복제·수정·재배포는 비상업 목적이라도 허락이 필요해요. 자세한 조건은 [LICENSE](LICENSE)를 보세요.
 
 - 폰트: IBM Plex Sans KR, IBM Plex Mono, Gamja Flower (SIL Open Font License)
 - 손글씨 숫자 데이터: MNIST (Yann LeCun, Corinna Cortes, Christopher Burges)
