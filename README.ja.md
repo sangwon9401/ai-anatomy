@@ -99,12 +99,15 @@ adb install -r app/build/outputs/apk/debug/app-debug.apk
 - ナレーションのしくみ（`scripts/narrate.mjs`、場面の `<Narration>`、`src/data/narration.json`）は残してあります。自然な音声ファイルを入れれば、場面の長さが音声に合わせて伸びます。
 - Remotion は個人と3人以下の会社なら無料です。それより大きい会社には会社ライセンスが必要です。
 
-## 著作権と出典
+## ライセンスと出典
 
-© 2026 sangwon9401. コードと講座コンテンツのすべての権利は著作者にあります。**商用利用はどんな形でも禁止です。** サイトで学ぶこと、コードを読むこと、リンクを共有することは自由ですが、それ以外の複製・改変・再配布は、非商用でも許可が必要です。詳しい条件は [LICENSE](LICENSE)（日本語訳：[LICENSE.ja.md](LICENSE.ja.md)）をご覧ください。
+- **コード**：[Apache License 2.0](LICENSE)。商用を含めて自由に使えます（[NOTICE](NOTICE) を残してください）。
+- **講座コンテンツ**（台本、ナレーション、クイズ、例、翻訳、コーパス、学習済みモデルのデータ、画像、文書）：[CC BY-NC-SA 4.0](LICENSE-CONTENT.ja.md)。出典を示せば、学校の授業、勉強会、翻訳など**非営利なら自由に**使ったり改変したりできます。**販売や有料講座・塾などの商用利用はできません。**どこまでがコンテンツかは [LICENSE-CONTENT.ja.md](LICENSE-CONTENT.ja.md) に書いてあります。
+
+出典：
 
 - フォント：IBM Plex Sans / Sans KR / Sans JP、IBM Plex Mono、Noto Sans SC、Gamja Flower、Patrick Hand、Klee One、ZCOOL KuaiLe（SIL Open Font License）
-- 手書き数字データ：MNIST（Yann LeCun、Corinna Cortes、Christopher Burges）
+- 手書き数字データ：MNIST（Yann LeCun、Corinna Cortes、Christopher Burges）、CC BY-SA 3.0
 - アテンションデータ：OpenAI GPT-2 small（MIT License）
 - トークン数の計算：OpenAI tiktoken（MIT License）
 - アニメーション：[Remotion](https://www.remotion.dev)

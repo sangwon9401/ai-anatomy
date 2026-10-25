@@ -99,12 +99,15 @@ adb install -r app/build/outputs/apk/debug/app-debug.apk
 - 旁白相关代码（`scripts/narrate.mjs`、画面里的 `<Narration>`、`src/data/narration.json`）仍保留着：放入自然的语音文件后，画面长度会自动配合语音延长。
 - Remotion 对个人和 3 人以下的公司免费；更大的公司需要公司许可。
 
-## 版权与出处
+## 许可与出处
 
-© 2026 sangwon9401。代码和课程内容的一切权利归作者所有。**禁止任何形式的商业使用。** 你可以用网站学习、阅读代码、分享链接；除此之外的复制、修改、再分发，即使是非商业用途也需要获得许可。完整条款见 [LICENSE](LICENSE)（中文译文：[LICENSE.zh.md](LICENSE.zh.md)）。
+- **代码**：[Apache License 2.0](LICENSE)。可以自由使用，包括商业用途（请保留 [NOTICE](NOTICE)）。
+- **课程内容**（脚本、旁白、测验、示例、译文、语料、训练好的模型数据、图片、文档）：[CC BY-NC-SA 4.0](LICENSE-CONTENT.zh.md)。注明出处后，可以**以非商业方式自由**使用和改编，例如课堂教学、学习小组、翻译。**不得出售，也不得用于付费课程、培训班等商业用途。**哪些属于课程内容，见 [LICENSE-CONTENT.zh.md](LICENSE-CONTENT.zh.md)。
+
+出处：
 
 - 字体：IBM Plex Sans / Sans KR / Sans JP、IBM Plex Mono、Noto Sans SC、Gamja Flower、Patrick Hand、Klee One、ZCOOL KuaiLe（SIL Open Font License）
-- 手写数字数据：MNIST（Yann LeCun、Corinna Cortes、Christopher Burges）
+- 手写数字数据：MNIST（Yann LeCun、Corinna Cortes、Christopher Burges）、CC BY-SA 3.0
 - 注意力数据：OpenAI GPT-2 small（MIT License）
 - 词元计数：OpenAI tiktoken（MIT License）
 - 动画：[Remotion](https://www.remotion.dev)

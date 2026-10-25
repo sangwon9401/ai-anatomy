@@ -109,12 +109,15 @@ adb install -r app/build/outputs/apk/debug/app-debug.apk
 - 내레이션 연결 부분(`scripts/narrate.mjs`, 장면의 `<Narration>`, `src/data/narration.json`)은 남아 있어요. 자연스러운 TTS로 음성 파일만 넣으면 장면 길이가 음성에 맞춰 늘어나요.
 - Remotion은 개인이나 3인 이하 회사는 무료예요. 그보다 큰 회사는 회사 라이선스가 필요해요.
 
-## 저작권과 출처
+## 라이선스와 출처
 
-© 2026 sangwon9401. 코드와 강의 콘텐츠의 모든 권리는 저작자에게 있어요. **상업적 이용은 어떤 형태로든 금지**예요. 사이트로 배우고, 코드를 읽고, 링크를 공유하는 것은 자유지만, 그 밖의 복제·수정·재배포는 비상업 목적이라도 허락이 필요해요. 자세한 조건은 [LICENSE](LICENSE)를 보세요.
+- **코드**: [Apache License 2.0](LICENSE). 상업적 이용을 포함해 자유롭게 쓸 수 있어요 ([NOTICE](NOTICE) 유지).
+- **강의 콘텐츠**(대본, 내레이션, 퀴즈, 예시, 번역, 말뭉치, 학습된 모델 데이터, 그림, 문서): [CC BY-NC-SA 4.0](LICENSE-CONTENT.ko.md). 출처를 밝히면 학교 수업, 공부 모임, 번역처럼 **비영리로는 자유롭게** 쓰고 고칠 수 있어요. **판매, 유료 강의·학원 등 상업적 이용은 안 돼요.** 어디까지가 콘텐츠인지는 [LICENSE-CONTENT.ko.md](LICENSE-CONTENT.ko.md)에 적어 뒀어요.
+
+출처:
 
 - 폰트: IBM Plex Sans KR / JP, IBM Plex Sans, IBM Plex Mono, Noto Sans SC, Gamja Flower, Patrick Hand, Klee One, ZCOOL KuaiLe (SIL Open Font License)
-- 손글씨 숫자 데이터: MNIST (Yann LeCun, Corinna Cortes, Christopher Burges)
+- 손글씨 숫자 데이터: MNIST (Yann LeCun, Corinna Cortes, Christopher Burges), CC BY-SA 3.0
 - 어텐션 데이터: OpenAI GPT-2 small (MIT License)
 - 토큰 수 계산: OpenAI tiktoken (MIT License)
 - 애니메이션: [Remotion](https://www.remotion.dev)

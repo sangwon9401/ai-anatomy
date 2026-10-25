@@ -99,12 +99,15 @@ adb install -r app/build/outputs/apk/debug/app-debug.apk
 - Narration plumbing is still in place (`scripts/narrate.mjs`, the scenes' `<Narration>`, `src/data/narration.json`): add natural-sounding voice clips and each scene stretches to fit them.
 - Remotion is free for individuals and companies of up to three people; larger companies need a company license.
 
-## Copyright and credits
+## License and credits
 
-© 2026 sangwon9401. All rights to the code and course content are reserved. **Commercial use of any kind is prohibited.** You are free to learn with the website, read the code and share links; any other copying, modification or redistribution needs permission, even for non-commercial purposes. See [LICENSE](LICENSE) for the full terms.
+- **Code**: [Apache License 2.0](LICENSE). Use it freely, commercial use included (keep the [NOTICE](NOTICE)).
+- **Course content** (scripts, narration, quizzes, examples, translations, corpora, trained model data, images, documents): [CC BY-NC-SA 4.0](LICENSE-CONTENT.md). With credit, you can use and adapt it **freely for non-commercial purposes** such as teaching a class, study groups or translations. **Selling it or using it in paid courses or academies is not allowed.** [LICENSE-CONTENT.md](LICENSE-CONTENT.md) says exactly what counts as content.
+
+Credits:
 
 - Fonts: IBM Plex Sans / Sans KR / Sans JP, IBM Plex Mono, Noto Sans SC, Gamja Flower, Patrick Hand, Klee One, ZCOOL KuaiLe (SIL Open Font License)
-- Handwritten digit data: MNIST (Yann LeCun, Corinna Cortes, Christopher Burges)
+- Handwritten digit data: MNIST (Yann LeCun, Corinna Cortes, Christopher Burges), CC BY-SA 3.0
 - Attention data: OpenAI GPT-2 small (MIT License)
 - Token counts: OpenAI tiktoken (MIT License)
 - Animation: [Remotion](https://www.remotion.dev)
