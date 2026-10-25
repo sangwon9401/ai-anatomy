@@ -274,6 +274,22 @@ export const InlineUnderline: FC<{ p: number; children: ReactNode }> = ({ p, chi
   </span>
 );
 
+// Latin terms followed by a number ("GPT-4o", "Part 4") must not split across lines; Japanese and Chinese
+// text breaks between any characters, and a hyphen or space would otherwise be a break point.
+const KEEP_TOGETHER = /[A-Za-z][A-Za-z0-9.]*(?:[- ][0-9][0-9A-Za-z.]*)+/g;
+
+/** Text with "GPT-4o"-style terms wrapped in no-break spans. */
+export function keepTerms(text: string): ReactNode {
+  const out: ReactNode[] = [];
+  let last = 0;
+  for (const m of text.matchAll(KEEP_TOGETHER)) {
+    out.push(text.slice(last, m.index), <span key={m.index} style={{ whiteSpace: "nowrap" }}>{m[0]}</span>);
+    last = m.index! + m[0].length;
+  }
+  out.push(text.slice(last));
+  return out;
+}
+
 export const Caption: FC<{ tl: TimedStep[] }> = ({ tl }) => {
   const frame = useCurrentFrame();
   const cur = tl.find((s) => frame >= s.from && frame < s.to) ?? tl[tl.length - 1];
@@ -296,7 +312,7 @@ export const Caption: FC<{ tl: TimedStep[] }> = ({ tl }) => {
         wordBreak: "keep-all",
       }}
     >
-      {cur.narration}
+      {keepTerms(cur.narration)}
     </div>
   );
 };

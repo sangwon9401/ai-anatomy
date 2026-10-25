@@ -4,7 +4,7 @@ export const T = {
   tagline: "ChatGPTはどうやって作られたのか、全96章",
   badge: "プロトタイプ 0.3",
   heroWords: ["私は", "今日", "学校に"],
-  heroAria: "私は今日学校に、次の言葉は?",
+  heroAria: "私は今日学校に、次の言葉は？",
   heroBars: [
     { w: "行く", p: 52, c: "yellow" },
     { w: "行った", p: 21, c: "mint" },
@@ -30,6 +30,7 @@ export const T = {
 
   // chapter page
   ch: (n: number) => `第${n}章`,
+  pair: (a: string, b: string) => `${a}：${b}`,
   chTitle: (n: number, title: string) => `第${n}章 ${title}`,
   chapterNav: "章の移動",
   prev: "前へ",

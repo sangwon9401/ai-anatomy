@@ -1,0 +1,76 @@
+import type { ChapterSpec } from "../../../data/types";
+
+export const TARGETS: [number, number][] = [
+  [2, 9],
+  [5, 18],
+];
+
+export const ch12: ChapterSpec = {
+  id: 12,
+  part: 1,
+  title: "Functions are input→output machines",
+  core: false,
+  hook: "People say an AI model is really just a \"function\". What does that mean?",
+  steps: [
+    { id: "s1", sec: 8, narration: "A machine that takes a number, changes it by a fixed rule and sends it out: that's a function." },
+    { id: "s2", sec: 9.5, narration: "If f(x) = 2x + 1, putting in 3 gives 7. Putting in 5 gives 11. The same input always gives the same output." },
+    { id: "s3", sec: 8.5, narration: "Functions can be chained. Put f's output, 7, into g, which squares it, and you get 49. This is called composition." },
+    { id: "s4", sec: 9.5, narration: "Functions have knobs inside. Change the 2 and the 1 in 2x + 1, and the machine behaves differently. These knobs are parameters." },
+    { id: "s5", sec: 8, narration: "GPT is a giant function too. Text goes in; next-piece probabilities come out. Inside, hundreds of small functions are chained." },
+    { id: "s6", sec: 8, narration: "GPT-3 has 175 billion knobs. Learning means turning these knobs bit by bit until the answers come out right." },
+    { id: "s7", sec: 8.5, narration: "An AI model is a function with a huge number of knobs. In Part 2, we learn how to turn them." },
+  ],
+  playgroundTitle: "Set the knobs",
+  playgroundIntro: "Turn the knobs a and b of f(x) = ax + b so the line passes through both red target points.",
+  summary: [
+    "Function: a machine that changes an input by a rule into an output. Same input → same output.",
+    "Functions can be chained (composition). The knobs inside are parameters.",
+    "GPT = a function with 175 billion parameters. Learning = setting the knobs.",
+  ],
+  unlocks: "Functions",
+  unlockLabel: "You got a new math tool",
+  quiz: [
+    {
+      q: "What do you get when you put 4 into f(x) = 2x + 1?",
+      choices: ["8", "9", "6"],
+      answer: 1,
+      explain: "2 × 4 + 1 = 9.",
+      review: "s2",
+    },
+    {
+      q: "What do we call the \"knobs\" inside a function?",
+      choices: ["Parameters", "Inputs", "Outputs"],
+      answer: 0,
+      explain: "Like the 2 and the 1 in 2x + 1, the numbers that decide how the machine behaves are parameters.",
+      review: "s4",
+    },
+    {
+      q: "If you see GPT as one function, what is its output?",
+      choices: ["The probabilities of the next piece", "One correct sentence", "A photo"],
+      answer: 0,
+      explain: "Put text in, and out comes a probability for each candidate next piece (chapter 1).",
+      review: "s5",
+    },
+  ],
+  labels: {
+    tag: "12. Functions are input→output machines",
+    input: "input",
+    output: "output",
+    f: "f(x) = 2x + 1",
+    g: "g(x) = x²",
+    same: "same input → same output",
+    compose: "composition",
+    knobs: "parameter = a tuning knob",
+    knobA: "slope",
+    knobB: "add",
+    newF: "f(x) = 3x + 1",
+    gpt: "GPT",
+    text: "I walk to",
+    probs: "next-piece probabilities",
+    many: "100s of small functions",
+    billion: "175 billion knobs",
+    learn: "learning = turning the knobs bit by bit",
+    sum: "AI = a function with many knobs",
+    next: "Part 2: how to turn the knobs",
+  },
+};

@@ -1,0 +1,92 @@
+import type { ChapterSpec } from "../../../data/types";
+
+/** the library analogy (s1–s4): book labels (Key) and the one book's contents (Value) */
+export const BOOKS = ["Cooking", "Space", "School", "Soccer"];
+/** illustrative example: what each word's Key "says" in words (real Keys are just numbers); I, walk, to, school */
+export const KEY_WORDS = ["person", "action", "toward", "place"];
+
+export const ch46: ChapterSpec = {
+  id: 46,
+  part: 5,
+  title: "Query · Key · Value",
+  core: true,
+  hook: "How does a word decide which other words in the sentence to look at?",
+  steps: [
+    { id: "s1", sec: 8.5, narration: "In chapter 45, 'trunk' looked more at related words. Measuring 'related' works a lot like finding a book in a library." },
+    { id: "s2", sec: 8.5, narration: "At the library, you start with something you want: 'Any stories about school?' That question card is the Query." },
+    { id: "s3", sec: 9.5, narration: "Each book has a label on its spine. You match your question against the labels and pick the books that fit. The label is the Key." },
+    { id: "s4", sec: 9.5, narration: "Open the book you picked and there's its content: the information you actually take. That's the Value. Pick by label, take the content." },
+    { id: "s5", sec: 8.5, narration: "Words in a sentence work the same way. Every word holds three cards: Q to ask, K to say what it is, and V to hand over." },
+    { id: "s6", sec: 9.5, narration: "'school' asks something like 'Is anything headed toward me?' That fits the label on 'to' best, so it takes the most of 'to''s content." },
+    { id: "s7", sec: 9.5, narration: "The cards are made by multiplying the word vector by matrices (ch. 11). School's vector (1, 1) times three matrices gives Q, K and V." },
+    { id: "s8", sec: 9.5, narration: "The numbers in the matrices are learned. How well a question fits a label, we'll measure next chapter with chapter 9's dot product." },
+  ],
+  playgroundTitle: "Card factory",
+  playgroundIntro: "Pick a word and watch how its Q, K and V cards are made. Change the numbers in the matrix that makes Q and see which word 'school' picks.",
+  summary: [
+    "Query is what I'm looking for, Key is the label that says what I am, Value is the content to hand over.",
+    "Match questions against labels to decide whom to look at, then take that much of their content.",
+    "Q, K, V = matrix × word vector (ch. 11). The numbers in the matrices are learned.",
+  ],
+  unlocks: "Query · Key · Value",
+  unlockLabel: "You cracked one of attention's secrets",
+  quiz: [
+    {
+      q: "In the library analogy, what is the Key?",
+      choices: ["The question I wrote down", "The label on a book's spine", "What's inside the book"],
+      answer: 1,
+      explain: "The Key is the label that says 'this is the kind of book I am'. It's what the question (Query) is matched against.",
+      review: "s3",
+    },
+    {
+      q: "What information does 'school' actually take from 'to'?",
+      choices: ["The Query of 'to'", "The Key of 'to'", "The Value of 'to'"],
+      answer: 2,
+      explain: "The Key is used for choosing; what gets taken is the Value (the content).",
+      review: "s4",
+    },
+    {
+      q: "Multiply the matrix [[1, 0], [3, −1]] by the word vector (1, 1). What do you get?",
+      choices: ["(1, 1)", "(1, 2)", "(4, 0)"],
+      answer: 1,
+      explain: "Row 1: (1, 0)·(1, 1) = 1. Row 2: (3, −1)·(1, 1) = 3 − 1 = 2. So (1, 2) (ch. 11).",
+      review: "s7",
+    },
+  ],
+  labels: {
+    tag: "46. Query · Key · Value",
+    // symbols drawn directly in the scene, listed so their font slices load
+    glyphs: "→",
+    howMuch: "Whom to look at, and how much?",
+    library: "Finding a book in a library",
+    qTab: "Q",
+    qName: "question card",
+    qText: "Any stories about school?",
+    match: "a good fit!",
+    vName: "content",
+    vText: "Met a friend on the way to school…",
+    pick: "pick by label (K)",
+    take: "take the content (V)",
+    qd: "ask",
+    kd: "tell",
+    vd: "give",
+    ask: "toward me?",
+    take2: "It takes the most V from 'to'",
+    ex: "illustrative example",
+    real: "* real Q, K and V are vectors of numbers, not words",
+    make: "card = matrix × word vector (ch. 11)",
+    xLine: "word vector of 'school'",
+    w: "W",
+    learn: "Matrix numbers are learned (Part 2)",
+    meas: "How well do they fit?",
+    dotHint: "measure with chapter 9's dot product",
+    next: "Next: ch. 47, relevance scores",
+    w0: "I",
+    w1: "walk",
+    w2: "to",
+    w3: "school",
+    q: "Q",
+    k: "K",
+    v: "V",
+  },
+};

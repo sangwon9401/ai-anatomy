@@ -1,8 +1,12 @@
 # AI 해부교실: ChatGPT편
 
+[한국어](README.md) · [English](README.en.md) · [日本語](README.ja.md) · [中文](README.zh.md)
+
 **ChatGPT는 어떻게 만들어졌을까?** 고등학교 1학년 눈높이로, 다음 말 맞히기에서 시작해 트랜스포머를 끝까지 조립하는 96장짜리 강의예요.
 
 **바로 보기: https://sangwon9401.github.io/ai-anatomy/** (휴대폰, 태블릿, PC 브라우저 어디서나. 설치도 로그인도 필요 없어요)
+
+영어 [/en/](https://sangwon9401.github.io/ai-anatomy/en/), 일본어 [/ja/](https://sangwon9401.github.io/ai-anatomy/ja/), 중국어 [/zh/](https://sangwon9401.github.io/ai-anatomy/zh/)판도 있어요. 번역만 한 게 아니라, 한글 조합·토큰 수·어순·속담처럼 언어에 따라 달라지는 장은 그 언어에 맞게 새로 만들었어요.
 
 ![AI 해부교실](app/site/og/home.jpg)
 
@@ -45,7 +49,7 @@
 
 ## 개발
 
-기획서는 [PLAN.md](PLAN.md), 장을 만드는 규칙은 [CHAPTER_GUIDE.md](CHAPTER_GUIDE.md)에 있어요.
+기획서는 [PLAN.md](PLAN.md), 장을 만드는 규칙은 [CHAPTER_GUIDE.md](CHAPTER_GUIDE.md), 번역 규칙은 [I18N_GUIDE.md](I18N_GUIDE.md)에 있어요.
 
 ```
 app/
@@ -54,7 +58,8 @@ app/
   src/playgrounds/ 장마다 "직접 해보기"
   src/ui/          홈, 장 페이지, 플레이어, 퀴즈, 진도 저장, 공유
   src/remotion/    MP4·이미지 렌더용 엔트리 (앱 아이콘, 공유 미리보기 카드)
-  site/og/         장마다 공유 미리보기 이미지 (npm run og로 다시 만듦)
+  src/i18n/        영어·일본어·중국어판: src/와 같은 경로에 바뀐 파일만 둠 (빌드할 때 한국어 파일 대신 들어감)
+  site/og/         장마다 공유 미리보기 이미지 (npm run og로 다시 만듦, 언어별로 site/og/en/ 등)
   android/         Capacitor 8 Android 프로젝트
 ```
 
@@ -64,10 +69,12 @@ app/
 cd app
 npm install
 npm run dev              # http://localhost:5173
+LOCALE=en npm run dev    # 영어판 (ja, zh도 같음)
 npm run studio           # Remotion Studio에서 장면 편집·미리보기
 npm run render -- ch45 out/ch45.mp4   # 한 장을 영상으로 (자막 포함)
-npm run og               # 공유 미리보기 이미지 97장 → site/og/
-npm run build:pages      # 공개 웹사이트 → dist/ (장마다 공유용 페이지, sitemap 포함)
+npm run og               # 공유 미리보기 이미지 97장 → site/og/ (LOCALE=en이면 site/og/en/)
+npm run build:pages      # 공개 웹사이트 → dist/ (공개된 모든 언어, 장마다 공유용 페이지, sitemap 포함)
+node scripts/i18n-check.mjs en   # 영어판에 남은 한국어 찾기
 OUT=out/check node scripts/check-scenes.mjs   # 96장 모든 스텝의 끝 장면 렌더 (오류·멈춤 검사)
 ```
 
@@ -106,7 +113,7 @@ adb install -r app/build/outputs/apk/debug/app-debug.apk
 
 © 2026 sangwon9401. 코드와 강의 콘텐츠의 모든 권리는 저작자에게 있어요. **상업적 이용은 어떤 형태로든 금지**예요. 사이트로 배우고, 코드를 읽고, 링크를 공유하는 것은 자유지만, 그 밖의 복제·수정·재배포는 비상업 목적이라도 허락이 필요해요. 자세한 조건은 [LICENSE](LICENSE)를 보세요.
 
-- 폰트: IBM Plex Sans KR, IBM Plex Mono, Gamja Flower (SIL Open Font License)
+- 폰트: IBM Plex Sans KR / JP, IBM Plex Sans, IBM Plex Mono, Noto Sans SC, Gamja Flower, Patrick Hand, Klee One, ZCOOL KuaiLe (SIL Open Font License)
 - 손글씨 숫자 데이터: MNIST (Yann LeCun, Corinna Cortes, Christopher Burges)
 - 어텐션 데이터: OpenAI GPT-2 small (MIT License)
 - 토큰 수 계산: OpenAI tiktoken (MIT License)

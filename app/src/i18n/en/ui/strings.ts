@@ -30,6 +30,7 @@ export const T = {
 
   // chapter page
   ch: (n: number) => `Chapter ${n}`,
+  pair: (a: string, b: string) => `${a}: ${b}`,
   chTitle: (n: number, title: string) => `${n}. ${title}`,
   chapterNav: "Chapter navigation",
   prev: "Previous",

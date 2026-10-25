@@ -1,0 +1,92 @@
+import type { ChapterSpec } from "../../../data/types";
+
+/** the library analogy (s1–s4): book labels (Key) and the one book's contents (Value) */
+export const BOOKS = ["菜谱", "太空旅行", "校园故事", "足球规则"];
+/** 示意数据: what each word's Key "says" in words (real Keys are just numbers); zh order 我 今天 去 学校 */
+export const KEY_WORDS = ["人", "时间", "动作", "地点"];
+
+export const ch46: ChapterSpec = {
+  id: 46,
+  part: 5,
+  title: "Query · Key · Value",
+  core: true,
+  hook: "句子里的词，是怎么决定要看谁的？",
+  steps: [
+    { id: "s1", sec: 8, narration: "第 45 章里，“包”会多看关系密切的词。量“关系”的办法，很像在图书馆里找书。" },
+    { id: "s2", sec: 8, narration: "去图书馆，你心里先有想找的东西：“有没有上学路上的故事？”这张问题卡就是 Query。" },
+    { id: "s3", sec: 8, narration: "书脊上贴着标签。把问题和标签对一对，挑出最合得来的书。这个标签就是 Key。" },
+    { id: "s4", sec: 8, narration: "翻开挑中的书，里面是内容，也就是真正拿走的信息，这就是 Value。用标签来挑，把内容拿走。" },
+    { id: "s5", sec: 8, narration: "句子里的词也一样。每个词都拿着三张卡：用来问的 Q，介绍自己的 K，要交出去的 V。" },
+    { id: "s6", sec: 9, narration: "“学校”的问题像是“谁做什么？”。它和“去”的标签最合得来，所以从“去”那里拿走最多的内容。" },
+    { id: "s7", sec: 9, narration: "卡片是用词向量乘矩阵做出来的（第 11 章）。“学校”的向量 (1, 1) 乘上三个矩阵，就得到 Q、K、V。" },
+    { id: "s8", sec: 8, narration: "矩阵里的数字是训练出来的。问题和标签有多合得来，下一章用第 9 章的点积来量。" },
+  ],
+  playgroundTitle: "卡片工厂",
+  playgroundIntro: "选一个词，看看它的 Q、K、V 卡片是怎么做出来的。改一改做 Q 的矩阵里的数字，“学校”挑中的词就会变。",
+  summary: [
+    "Query 是我要找的东西，Key 是介绍自己的标签，Value 是要交出去的内容。",
+    "用问题对标签来决定看谁，内容就按看的多少拿走。",
+    "Q、K、V = 词向量 × 矩阵（第 11 章）。矩阵里的数字是训练出来的。",
+  ],
+  unlocks: "Query · Key · Value",
+  unlockLabel: "解开了注意力的一个秘密",
+  quiz: [
+    {
+      q: "在图书馆的比喻里，Key 对应的是什么？",
+      choices: ["我写下的问题", "贴在书脊上的标签", "书里的内容"],
+      answer: 1,
+      explain: "Key 是“我是这样一本书”的标签，用来和问题（Query）对一对。",
+      review: "s3",
+    },
+    {
+      q: "“学校”从“去”那里真正拿走的信息是？",
+      choices: ["“去”的 Query", "“去”的 Key", "“去”的 Value"],
+      answer: 2,
+      explain: "Key 用来挑，真正拿走的是 Value（内容）。",
+      review: "s4",
+    },
+    {
+      q: "词向量 (1, 1) 乘上矩阵 [[1, 0], [3, −1]]，结果是？",
+      choices: ["(1, 1)", "(1, 2)", "(4, 0)"],
+      answer: 1,
+      explain: "第 1 行 (1, 0)·(1, 1) = 1，第 2 行 (3, −1)·(1, 1) = 3 − 1 = 2，所以是 (1, 2)（第 11 章）。",
+      review: "s7",
+    },
+  ],
+  labels: {
+    tag: "第 46 章 Query · Key · Value",
+    // symbols drawn directly in the scene, listed so their font slices load
+    glyphs: "→",
+    howMuch: "看谁？看多少？",
+    library: "在图书馆里找书",
+    qTab: "Q",
+    qName: "问题卡",
+    qText: "有没有上学路上的故事？",
+    match: "很合得来！",
+    vName: "内容",
+    vText: "上学路上遇到朋友，一起走……",
+    pick: "用标签（K）来挑",
+    take: "把内容（V）拿走",
+    qd: "提问",
+    kd: "介绍",
+    vd: "交出",
+    ask: "谁做什么？",
+    take2: "从“去”那里拿走最多的 V",
+    ex: "示意数据",
+    real: "* 真正的 Q、K、V 不是文字，而是数字向量",
+    make: "卡片 = 词向量 × 矩阵（第 11 章）",
+    xLine: "“学校”的词向量",
+    w: "W",
+    learn: "矩阵里的数字是训练出来的（Part 2）",
+    meas: "有多合得来？",
+    dotHint: "用第 9 章的点积来量",
+    next: "下一章：第 47 章 相关度分数",
+    w0: "我",
+    w1: "今天",
+    w2: "去",
+    w3: "学校",
+    q: "Q",
+    k: "K",
+    v: "V",
+  },
+};

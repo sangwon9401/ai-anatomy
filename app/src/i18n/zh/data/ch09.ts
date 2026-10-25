@@ -1,0 +1,70 @@
+import type { ChapterSpec } from "../../../data/types";
+
+export const dot = (a: number[], b: number[]) => a.reduce((s, x, i) => s + x * b[i], 0);
+
+export const ch09: ChapterSpec = {
+  id: 9,
+  part: 1,
+  title: "点积：方向有多一致？",
+  core: true,
+  hook: "两支箭头有多指向同一边，能用一个数字表示吗？",
+  steps: [
+    { id: "s1", sec: 7, narration: "衡量两个向量有多像，还有一种方法：点积。算法很简单：同一格的数相乘，再全部加起来。" },
+    { id: "s2", sec: 8, narration: "小雨 (8, 3) 和小美 (7, 4)：8 乘 7 是 56，3 乘 4 是 12，加起来的 68 就是点积。" },
+    { id: "s3", sec: 8, narration: "小雨和小杰 (2, 9) 呢？8 乘 2 是 16，3 乘 9 是 27，和是 43。比小美小，因为方向没那么像。" },
+    { id: "s4", sec: 9, narration: "转动箭头就会发现：指向越一致，点积越大；垂直时是 0，指向相反就变成负数。" },
+    { id: "s5", sec: 7, narration: "箭头变长，点积也会变大。点积里同时装着“方向有多一致”和“有多强”。" },
+    { id: "s6", sec: 8, narration: "GPT 的注意力，就是用点积给词与词之间的关联程度打分。第 47 章还会再见。" },
+    { id: "s7", sec: 6, narration: "同一格相乘，再全部加起来。这是 Transformer 做得最多的计算之一。" },
+  ],
+  playgroundTitle: "转动箭头",
+  playgroundIntro: "改变蓝色箭头的角度和长度，找一找点积变成 0 的地方，和变成负数的地方。",
+  summary: [
+    "点积：同一格相乘再全部相加。(8, 3)·(7, 4) = 56 + 12 = 68。",
+    "方向相同就大，垂直是 0，方向相反是负数。",
+    "箭头越长越大。注意力用它来衡量关联程度。",
+  ],
+  unlocks: "点积",
+  unlockLabel: "得到了一件数学工具",
+  quiz: [
+    {
+      q: "(2, 1) 和 (3, 4) 的点积是多少？",
+      choices: ["10", "7", "24"],
+      answer: 0,
+      explain: "2×3 + 1×4 = 6 + 4 = 10。",
+      review: "s2",
+    },
+    {
+      q: "两支箭头互相垂直时，点积是多少？",
+      choices: ["最大", "0", "负数"],
+      answer: 1,
+      explain: "指向完全不相干的方向时，点积是 0；指向相反时是负数。",
+      review: "s4",
+    },
+    {
+      q: "在注意力里，点积用来衡量什么？",
+      choices: ["词的字数", "词与词之间有多相关", "句子的长度"],
+      answer: 1,
+      explain: "词向量之间做点积，得出关联分数（第 47 章）。",
+      review: "s6",
+    },
+  ],
+  labels: {
+    tag: "第 9 章 点积：方向有多一致？",
+    rule: "同一格相乘再相加",
+    minji: "小雨",
+    junho: "小杰",
+    seoyeon: "小美",
+    same: "方向相同 → 大",
+    right: "垂直 → 0",
+    opposite: "相反 → 负数",
+    longer: "越长越大",
+    attention: "注意力的关联分数（第 47 章）",
+    it: "它",
+    cat: "猫",
+    fish: "把鱼",
+    ate: "吃了",
+    sum: "相乘再相加 = 点积",
+    dotLabel: "点积",
+  },
+};

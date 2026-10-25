@@ -30,6 +30,7 @@ export const T = {
 
   // chapter page
   ch: (n: number) => `${n}장`,
+  pair: (a: string, b: string) => `${a}: ${b}`,
   chTitle: (n: number, title: string) => `${n}장 ${title}`,
   chapterNav: "장 이동",
   prev: "이전",

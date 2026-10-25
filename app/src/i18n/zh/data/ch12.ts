@@ -1,0 +1,76 @@
+import type { ChapterSpec } from "../../../data/types";
+
+export const TARGETS: [number, number][] = [
+  [2, 9],
+  [5, 18],
+];
+
+export const ch12: ChapterSpec = {
+  id: 12,
+  part: 1,
+  title: "函数是输入→输出的机器",
+  core: false,
+  hook: "听说 AI 模型说到底也是一个“函数”，这是什么意思？",
+  steps: [
+    { id: "s1", sec: 6, narration: "放进一个数，它会按规定好的规则变一变再送出来。这样的机器就是函数。" },
+    { id: "s2", sec: 8, narration: "如果 f(x) = 2x + 1，放进 3 就出来 7，放进 5 就出来 11。同样的输入，永远得到同样的输出。" },
+    { id: "s3", sec: 8, narration: "函数可以首尾相接。把 f 出来的 7 放进求平方的函数 g，就得到 49。这叫作复合。" },
+    { id: "s4", sec: 9, narration: "函数里有调节旋钮。改一改 2x + 1 里的 2 和 1，机器的动作就变了。这些旋钮叫作参数。" },
+    { id: "s5", sec: 8, narration: "GPT 也是一个巨大的函数：放进文字，出来下一个片段的概率。它里面串着几百个小函数。" },
+    { id: "s6", sec: 8, narration: "GPT-⁠3 有 1750 亿个旋钮。所谓学习，就是一点点转动这些旋钮，让它给出想要的答案。" },
+    { id: "s7", sec: 6, narration: "AI 模型就是旋钮非常多的函数。怎么转动旋钮，Part 2 会学到。" },
+  ],
+  playgroundTitle: "调好旋钮",
+  playgroundIntro: "转动 f(x) = ax + b 的旋钮 a 和 b，让直线同时穿过两个红色目标点。",
+  summary: [
+    "函数：把输入按规则变成输出的机器。同样的输入 → 同样的输出。",
+    "函数可以首尾相接（复合）。里面的调节旋钮 = 参数。",
+    "GPT = 有 1750 亿个参数的函数。学习 = 调好旋钮。",
+  ],
+  unlocks: "函数",
+  unlockLabel: "得到了一件数学工具",
+  quiz: [
+    {
+      q: "把 4 放进 f(x) = 2x + 1，结果是？",
+      choices: ["8", "9", "6"],
+      answer: 1,
+      explain: "2 × 4 + 1 = 9。",
+      review: "s2",
+    },
+    {
+      q: "函数里的“调节旋钮”叫什么？",
+      choices: ["参数", "输入", "输出"],
+      answer: 0,
+      explain: "像 2x + 1 里的 2 和 1 这样，决定机器怎么动作的数字，就是参数。",
+      review: "s4",
+    },
+    {
+      q: "把 GPT 看成一个函数，它的输出是什么？",
+      choices: ["下一个片段的概率", "一句标准答案", "照片"],
+      answer: 0,
+      explain: "放进文字，就会给下一个片段的每个候选算出概率（第 1 章）。",
+      review: "s5",
+    },
+  ],
+  labels: {
+    tag: "第 12 章 函数是输入→输出的机器",
+    input: "输入",
+    output: "输出",
+    f: "f(x) = 2x + 1",
+    g: "g(x) = x²",
+    same: "同样的输入 → 同样的输出",
+    compose: "复合",
+    knobs: "参数 = 调节旋钮",
+    knobA: "斜率",
+    knobB: "加数",
+    newF: "f(x) = 3x + 1",
+    gpt: "GPT",
+    text: "我今天去",
+    probs: "下一个片段的概率",
+    many: "几百个小函数",
+    billion: "1750 亿个旋钮",
+    learn: "学习 = 一点点转动旋钮",
+    sum: "AI 模型 = 旋钮非常多的函数",
+    next: "Part 2 会学怎么转旋钮",
+  },
+};

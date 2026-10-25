@@ -37,7 +37,7 @@ import { Quiz } from "./Quiz";
 import { ScenePlayer, type ScenePlayerHandle } from "./ScenePlayer";
 
 const TIMELINE: OrderItem[] = ORDER_ITEMS.map((i) => ({ key: i.key, label: i.label, meta: i.year }));
-const BLUEPRINT: OrderItem[] = PIPELINE.map((p) => ({ key: p.key, label: `${p.name}: ${p.does}`, meta: p.where }));
+const BLUEPRINT: OrderItem[] = PIPELINE.map((p) => ({ key: p.key, label: T.pair(p.name, p.does), meta: p.where }));
 
 const TimelineOrder: FC = () => <OrderGame items={TIMELINE} wrongHint={T.timelineWrong} doneText={T.timelineDone} />;
 const BlueprintOrder: FC = () => (

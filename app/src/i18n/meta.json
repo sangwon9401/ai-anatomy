@@ -10,7 +10,7 @@
     "fonts": "https://fonts.googleapis.com/css2?family=Gamja+Flower&family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans+KR:wght@400;500;700&display=swap"
   },
   "en": {
-    "ready": false,
+    "ready": true,
     "label": "English",
     "lang": "en",
     "ogLocale": "en_US",
@@ -20,7 +20,7 @@
     "fonts": "https://fonts.googleapis.com/css2?family=Patrick+Hand&family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans:wght@400;500;700&display=swap"
   },
   "ja": {
-    "ready": false,
+    "ready": true,
     "label": "日本語",
     "lang": "ja",
     "ogLocale": "ja_JP",
@@ -30,7 +30,7 @@
     "fonts": "https://fonts.googleapis.com/css2?family=Klee+One:wght@400;600&family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans+JP:wght@400;500;700&display=swap"
   },
   "zh": {
-    "ready": false,
+    "ready": true,
     "label": "中文",
     "lang": "zh-Hans",
     "ogLocale": "zh_CN",

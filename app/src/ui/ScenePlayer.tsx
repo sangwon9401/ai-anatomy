@@ -1,7 +1,7 @@
 import { Player, type CallbackListener, type PlayerRef } from "@remotion/player";
 import { ChevronLeft, ChevronRight, Pause, Play, Volume2, VolumeX } from "lucide-react";
 import { forwardRef, useCallback, useEffect, useImperativeHandle, useMemo, useRef, useState } from "react";
-import { FPS, H, W, buildTimeline } from "../scenes/kit";
+import { FPS, H, W, buildTimeline, keepTerms } from "../scenes/kit";
 import type { BuiltChapter } from "../scenes/registry";
 import { NARRATION_AUDIO } from "./narrationAudio";
 import { T } from "./strings";
@@ -178,7 +178,7 @@ export const ScenePlayer = forwardRef<ScenePlayerHandle, { built: BuiltChapter }
         <span className="k">
           {curIndex + 1} / {tl.length}
         </span>
-        {step.narration}
+        {keepTerms(step.narration)}
       </p>
     </div>
   );

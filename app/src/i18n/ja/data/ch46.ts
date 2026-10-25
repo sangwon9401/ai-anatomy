@@ -1,0 +1,92 @@
+import type { ChapterSpec } from "../../../data/types";
+
+/** the library analogy (s1–s4): book labels (Key) and the one book's contents (Value) */
+export const BOOKS = ["料理の本", "宇宙旅行", "学校の話", "サッカー"];
+/** 説明用の例: what each word's Key "says" in words (real Keys are just numbers) */
+export const KEY_WORDS = ["人", "時間", "場所", "動作"];
+
+export const ch46: ChapterSpec = {
+  id: 46,
+  part: 5,
+  title: "Query・Key・Value",
+  core: true,
+  hook: "文の中の語は、だれを見るかをどうやって決めるのでしょう？",
+  steps: [
+    { id: "s1", sec: 8, narration: "第45章で「かみ」は、関係の深い語をたくさん見つめました。その「関係」の測り方は、図書館で本を探すのに似ています。" },
+    { id: "s2", sec: 8, narration: "図書館に行くと、まず探したいものがありますね。「学校の話、ある？」この質問カードがQueryです。" },
+    { id: "s3", sec: 8, narration: "本の背にはラベルがはってあります。質問とラベルを合わせて、よく合う本をえらびます。このラベルがKeyです。" },
+    { id: "s4", sec: 8, narration: "えらんだ本を開くと中身があります。実際に持ってくる情報、これがValueです。ラベルでえらんで、中身を持ってきます。" },
+    { id: "s5", sec: 8, narration: "文の中の語も同じです。どの語もカードを3枚ずつ持っています。たずねるQ、自分を知らせるK、渡すV。" },
+    { id: "s6", sec: 9, narration: "「行く」の質問は「だれが？ どこへ？」のようなもの。「学校に」のラベルとよく合うので、「学校に」の中身をたくさん持ってきます。" },
+    { id: "s7", sec: 9, narration: "カードは、語のベクトルに行列をかけて作ります(第11章)。「行く」のベクトル(1, 1)に3つの行列をかけると、Q、K、Vが出ます。" },
+    { id: "s8", sec: 8, narration: "行列の中の数は学習で決まります。質問とラベルがどれだけ合うかは、次の章で第9章の内積を使って測ります。" },
+  ],
+  playgroundTitle: "カード工場",
+  playgroundIntro: "語をえらんで、Q、K、Vのカードがどうやって作られるか見てみましょう。Qを作る行列の数を変えると、「行く」がえらぶ語が変わります。",
+  summary: [
+    "Queryは自分が探しているもの、Keyは自分を知らせるラベル、Valueは渡す中身。",
+    "質問とラベルを合わせてだれを見るかを決め、中身はその分だけ持ってくる。",
+    "Q、K、V ＝ 語のベクトル × 行列(第11章)。行列の中の数は学習で決める。",
+  ],
+  unlocks: "Query・Key・Value",
+  unlockLabel: "アテンションの秘密をひとつ解きました",
+  quiz: [
+    {
+      q: "図書館のたとえで、Keyにあたるものは？",
+      choices: ["自分が書いた質問", "本の背にはったラベル", "本の中身"],
+      answer: 1,
+      explain: "Keyは「私はこんな本です」と知らせるラベルです。質問(Query)と合わせるときに使います。",
+      review: "s3",
+    },
+    {
+      q: "「行く」が「学校に」から実際に持ってくる情報は？",
+      choices: ["「学校に」のQuery", "「学校に」のKey", "「学校に」のValue"],
+      answer: 2,
+      explain: "Keyはえらぶのに使い、持ってくるのはValue(中身)です。",
+      review: "s4",
+    },
+    {
+      q: "語のベクトル(1, 1)に行列[[1, 0], [3, −1]]をかけると？",
+      choices: ["(1, 1)", "(1, 2)", "(4, 0)"],
+      answer: 1,
+      explain: "1行目 (1, 0)・(1, 1) = 1、2行目 (3, −1)・(1, 1) = 3 − 1 = 2。だから(1, 2)です(第11章)。",
+      review: "s7",
+    },
+  ],
+  labels: {
+    tag: "第46章 Query・Key・Value",
+    // symbols drawn directly in the scene, listed so their font slices load
+    glyphs: "→",
+    howMuch: "だれを、どれだけ見る？",
+    library: "図書館で本を探す",
+    qTab: "Q",
+    qName: "質問カード",
+    qText: "学校の話、ある？",
+    match: "よく合う！",
+    vName: "中身",
+    vText: "通学路で友だちに会った…",
+    pick: "ラベル(K)でえらび",
+    take: "中身(V)を持ってくる",
+    qd: "たずねる",
+    kd: "知らせる",
+    vd: "渡す",
+    ask: "だれ？どこ？",
+    take2: "「学校に」のVをいちばん多く持ってくる",
+    ex: "説明用の例",
+    real: "* 本物のQ、K、Vは、ことばではなく数のベクトル",
+    make: "カード ＝ 語のベクトル × 行列 (第11章)",
+    xLine: "「行く」の語のベクトル",
+    w: "W",
+    learn: "行列の中の数は学習で決める (Part 2)",
+    meas: "どれだけよく合う？",
+    dotHint: "第9章の内積で測る",
+    next: "次の章：第47章 関連度スコア",
+    w0: "私は",
+    w1: "今日",
+    w2: "学校に",
+    w3: "行く",
+    q: "Q",
+    k: "K",
+    v: "V",
+  },
+};

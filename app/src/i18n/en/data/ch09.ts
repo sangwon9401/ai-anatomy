@@ -1,0 +1,70 @@
+import type { ChapterSpec } from "../../../data/types";
+
+export const dot = (a: number[], b: number[]) => a.reduce((s, x, i) => s + x * b[i], 0);
+
+export const ch09: ChapterSpec = {
+  id: 9,
+  part: 1,
+  title: "Dot product: how much the same direction?",
+  core: true,
+  hook: "Can one number tell how much two arrows point the same way?",
+  steps: [
+    { id: "s1", sec: 9.5, narration: "Here's another way to measure how alike two vectors are: the dot product. It's simple: multiply matching slots, then add it all up." },
+    { id: "s2", sec: 10.5, narration: "Mia (8, 3) and Emma (7, 4): 8 times 7 is 56, and 3 times 4 is 12. Add them to get 68. That's the dot product." },
+    { id: "s3", sec: 10.5, narration: "Mia and Noah (2, 9)? 8 times 2 is 16, 3 times 9 is 27, total 43. Smaller than with Emma, because their directions are less alike." },
+    { id: "s4", sec: 9, narration: "Turn the arrow: the same direction gives a big dot product. A right angle gives 0. Opposite directions give a negative number." },
+    { id: "s5", sec: 9, narration: "Longer arrows make the dot product bigger too. It holds both how alike the directions are and how strong the vectors are." },
+    { id: "s6", sec: 8.5, narration: "GPT's attention uses dot products to score how related words are to each other. We'll meet it again in chapter 47." },
+    { id: "s7", sec: 7.5, narration: "Multiply matching slots and add them all up. It's one of the calculations a transformer does most often." },
+  ],
+  playgroundTitle: "Turn the arrow",
+  playgroundIntro: "Change the angle and length of the blue arrow. Find where the dot product becomes 0, and where it turns negative.",
+  summary: [
+    "Dot product: multiply matching slots and add them all. (8, 3)·(7, 4) = 56 + 12 = 68.",
+    "Same direction: big. Right angle: 0. Opposite direction: negative.",
+    "Longer arrows make it bigger. It's how attention measures relevance.",
+  ],
+  unlocks: "Dot product",
+  unlockLabel: "You got a new math tool",
+  quiz: [
+    {
+      q: "What is the dot product of (2, 1) and (3, 4)?",
+      choices: ["10", "7", "24"],
+      answer: 0,
+      explain: "2×3 + 1×4 = 6 + 4 = 10.",
+      review: "s2",
+    },
+    {
+      q: "What is the dot product when two arrows form a right angle?",
+      choices: ["The biggest possible", "0", "Negative"],
+      answer: 1,
+      explain: "When two arrows point in completely unrelated directions, the dot product is 0. Opposite directions give a negative number.",
+      review: "s4",
+    },
+    {
+      q: "What is the dot product used to measure in attention?",
+      choices: ["How many letters a word has", "How related words are to each other", "How long the sentence is"],
+      answer: 1,
+      explain: "It takes the dot product of word vectors to score how relevant they are (chapter 47).",
+      review: "s6",
+    },
+  ],
+  labels: {
+    tag: "9. Dot product: how much the same direction?",
+    rule: "multiply pairs, then add",
+    minji: "Mia",
+    junho: "Noah",
+    seoyeon: "Emma",
+    same: "same way → big",
+    right: "right angle → 0",
+    opposite: "opposite → negative",
+    longer: "longer → bigger",
+    attention: "Attention's relevance scores (ch. 47)",
+    it: "It",
+    cat: "The cat",
+    fish: "the fish.",
+    ate: "ate",
+    sum: "Multiply, add = dot product",
+    dotLabel: "Dot product",
+  },
+};
