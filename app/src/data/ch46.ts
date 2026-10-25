@@ -1,0 +1,92 @@
+import type { ChapterSpec } from "./types";
+
+/** the library analogy (s1–s4): book labels (Key) and the one book's contents (Value) */
+export const BOOKS = ["요리책", "우주 여행", "학교 이야기", "축구 규칙"];
+/** 설명용 예시: what each word's Key "says" in words (real Keys are just numbers) */
+export const KEY_WORDS = ["사람", "시간", "장소", "동작"];
+
+export const ch46: ChapterSpec = {
+  id: 46,
+  part: 5,
+  title: "Query · Key · Value",
+  core: true,
+  hook: "단어는 문장 속에서 누구를 볼지 어떻게 정할까요?",
+  steps: [
+    { id: "s1", sec: 8, narration: "45장에서 '배'는 관련 깊은 단어를 더 많이 쳐다봤어요. 그 '관련'을 재는 방법은 도서관에서 책 찾기와 닮았어요." },
+    { id: "s2", sec: 8, narration: "도서관에 가면 먼저 찾고 싶은 게 있죠. '학교 가는 이야기 없나?' 이 질문 카드가 Query예요." },
+    { id: "s3", sec: 8, narration: "책 등에는 라벨이 붙어 있어요. 질문과 라벨을 맞춰 보고, 잘 맞는 책을 골라요. 이 라벨이 Key예요." },
+    { id: "s4", sec: 8, narration: "고른 책을 펼치면 내용이 있어요. 실제로 가져오는 정보, 이게 Value예요. 라벨로 고르고, 내용을 가져와요." },
+    { id: "s5", sec: 8, narration: "문장 속 단어도 똑같아요. 단어마다 카드를 세 장씩 들고 있어요. 묻는 Q, 나를 알리는 K, 건네줄 V." },
+    { id: "s6", sec: 9, narration: "'간다'의 질문은 '누가? 어디로?' 같은 거예요. '학교에'의 라벨과 잘 맞으니, '학교에'의 내용을 많이 가져와요." },
+    { id: "s7", sec: 9, narration: "카드는 단어 벡터에 행렬을 곱해서 만들어요(11장). '간다'의 벡터 (1, 1)에 세 행렬을 곱하면 Q, K, V가 나와요." },
+    { id: "s8", sec: 8, narration: "행렬 속 숫자는 학습으로 정해져요. 질문과 라벨이 얼마나 맞는지는 다음 장에서 9장의 내적으로 재 봐요." },
+  ],
+  playgroundTitle: "카드 공장",
+  playgroundIntro: "단어를 골라 Q, K, V 카드가 어떻게 만들어지는지 보세요. Q를 만드는 행렬의 숫자를 바꾸면 '간다'가 고르는 단어가 달라져요.",
+  summary: [
+    "Query는 내가 찾는 것, Key는 나를 알리는 라벨, Value는 건네줄 내용.",
+    "질문과 라벨을 맞춰 누구를 볼지 정하고, 내용은 그만큼 가져온다.",
+    "Q, K, V = 단어 벡터 × 행렬(11장). 행렬 속 숫자는 학습으로 정한다.",
+  ],
+  unlocks: "Query · Key · Value",
+  unlockLabel: "어텐션의 비밀을 하나 풀었어요",
+  quiz: [
+    {
+      q: "도서관 비유에서 Key에 해당하는 것은?",
+      choices: ["내가 적은 질문", "책 등에 붙은 라벨", "책 속 내용"],
+      answer: 1,
+      explain: "Key는 '나는 이런 책이에요'라고 알리는 라벨이에요. 질문(Query)과 맞춰 볼 때 써요.",
+      review: "s3",
+    },
+    {
+      q: "'간다'가 '학교에'에서 실제로 가져오는 정보는?",
+      choices: ["'학교에'의 Query", "'학교에'의 Key", "'학교에'의 Value"],
+      answer: 2,
+      explain: "Key는 고르는 데 쓰고, 가져오는 건 Value(내용)예요.",
+      review: "s4",
+    },
+    {
+      q: "단어 벡터 (1, 1)에 행렬 [[1, 0], [3, −1]]을 곱하면?",
+      choices: ["(1, 1)", "(1, 2)", "(4, 0)"],
+      answer: 1,
+      explain: "1행 (1, 0)·(1, 1) = 1, 2행 (3, −1)·(1, 1) = 3 − 1 = 2. 그래서 (1, 2)예요(11장).",
+      review: "s7",
+    },
+  ],
+  labels: {
+    tag: "46장 Query · Key · Value",
+    // symbols drawn directly in the scene, listed so their font slices load
+    glyphs: "→",
+    howMuch: "누구를 얼마나 볼까?",
+    library: "도서관에서 책 찾기",
+    qTab: "Q",
+    qName: "질문 카드",
+    qText: "학교 가는 이야기 없나?",
+    match: "잘 맞아요!",
+    vName: "내용",
+    vText: "등굣길에 친구를 만나 같이 걸었다…",
+    pick: "라벨(K)로 고르고",
+    take: "내용(V)을 가져와요",
+    qd: "묻기",
+    kd: "알리기",
+    vd: "건네주기",
+    ask: "누가? 어디로?",
+    take2: "'학교에'의 V를 가장 많이 가져와요",
+    ex: "설명용 예시",
+    real: "* 실제 Q, K, V는 말이 아니라 숫자 벡터예요",
+    make: "카드 = 단어 벡터 × 행렬 (11장)",
+    xLine: "'간다'의 단어 벡터",
+    w: "W",
+    learn: "행렬 속 숫자는 학습으로 정해요 (Part 2)",
+    meas: "얼마나 잘 맞을까?",
+    dotHint: "9장의 내적으로 재요",
+    next: "다음 장: 47장 관련도 점수",
+    w0: "나는",
+    w1: "오늘",
+    w2: "학교에",
+    w3: "간다",
+    q: "Q",
+    k: "K",
+    v: "V",
+  },
+};

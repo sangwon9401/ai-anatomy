@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">AI 해부교실</string>
+    <string name="title_activity_main">AI 해부교실</string>
+    <string name="package_name">com.myplatform.gptclassroom</string>
+    <string name="custom_url_scheme">com.myplatform.gptclassroom</string>
+</resources>

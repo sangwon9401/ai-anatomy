@@ -1,0 +1,13 @@
+.DS_Store
+.claude/
+artifact/
+app/node_modules/
+app/dist/
+app/dist-artifact/
+app/out/
+# Capacitor copies the web build into the Android project on `cap sync`
+app/android/app/src/main/assets/public/
+app/android/app/src/main/assets/capacitor.config.json
+app/android/app/src/main/assets/capacitor.plugins.json
+app/android/capacitor-cordova-android-plugins/
+skills-lock.json

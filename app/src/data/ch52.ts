@@ -1,0 +1,130 @@
+import type { ChapterSpec, Highlighter } from "./types";
+
+/**
+ * 설명용 예시: three made-up heads on 나는 오늘 학교에 간다 (with the causal mask, 51장).
+ * Each map is in percent, row = the word looking, column = the word looked at; every row adds up to 100.
+ */
+export const HEADS52: { name: string; ask: string; target: number; c: Highlighter; map: number[][] }[] = [
+  {
+    name: "헤드 1",
+    ask: "누가?",
+    target: 0,
+    c: "pink",
+    map: [
+      [100, 0, 0, 0],
+      [85, 15, 0, 0],
+      [80, 8, 12, 0],
+      [75, 5, 10, 10],
+    ],
+  },
+  {
+    name: "헤드 2",
+    ask: "언제?",
+    target: 1,
+    c: "violet",
+    map: [
+      [100, 0, 0, 0],
+      [20, 80, 0, 0],
+      [10, 75, 15, 0],
+      [8, 70, 12, 10],
+    ],
+  },
+  {
+    name: "헤드 3",
+    ask: "어디로?",
+    target: 2,
+    c: "orange",
+    map: [
+      [100, 0, 0, 0],
+      [50, 50, 0, 0],
+      [15, 10, 75, 0],
+      [7, 5, 80, 8],
+    ],
+  },
+];
+
+export const ch52: ChapterSpec = {
+  id: 52,
+  part: 5,
+  title: "여러 눈으로 보기",
+  core: false,
+  hook: "'간다'는 누가 가는지도, 어디로 가는지도 알아야 해요. 한 번 쳐다보는 걸로 충분할까요?",
+  steps: [
+    { id: "s1", sec: 7, narration: "한 문장 안에도 관계는 여러 가지예요. 누가 하는지, 언제인지, 어디로 가는지." },
+    { id: "s2", sec: 10, narration: "그런데 어텐션 한 번은 비율을 한 가지로만 정해요. 그래서 Q, K, V 세트를 여러 개 만들어요. 한 세트를 헤드(head)라고 해요." },
+    { id: "s3", sec: 9, narration: "예를 들어 헤드 1은 '누가'를, 헤드 2는 '언제'를, 헤드 3은 '어디로'를 찾아요. 같은 '간다'인데 보는 곳이 달라요." },
+    { id: "s4", sec: 8, narration: "헤드들은 서로 기다리지 않고 동시에, 따로따로 계산해요. 각자 '간다'의 새 벡터를 하나씩 내놓아요." },
+    { id: "s5", sec: 9, narration: "결과들을 옆으로 이어 붙이고, 행렬을 한 번 더 곱해서 하나로 섞어요. 여러 눈으로 본 정보가 한 벡터에 모여요." },
+    { id: "s6", sec: 9, narration: "GPT-3는 층마다 헤드가 96개, 헤드 하나는 128칸이에요. 96 × 128 = 12,288, 단어 벡터의 크기와 딱 맞아요." },
+    { id: "s7", sec: 9, narration: "어떤 헤드가 무엇을 볼지는 사람이 정하지 않아요. 학습하면서 저절로 나뉘어요. 53장에서 진짜 헤드를 들여다봐요." },
+  ],
+  playgroundTitle: "헤드 탐정",
+  playgroundIntro: "어텐션 지도를 보고, 이 헤드가 무엇을 찾는지 맞혀 보세요. 진한 칸일수록 많이 쳐다봐요.",
+  summary: [
+    "Q, K, V 한 세트 = 헤드 하나. 헤드마다 보는 관계가 다르다.",
+    "헤드들은 동시에 계산하고, 결과를 이어 붙여 행렬로 한 번 더 섞는다.",
+    "GPT-3: 층마다 헤드 96개 × 128칸 = 12,288. 역할은 학습으로 저절로 나뉜다.",
+  ],
+  unlocks: "멀티헤드 어텐션",
+  unlockLabel: "어텐션의 비밀을 하나 풀었어요",
+  quiz: [
+    {
+      q: "헤드를 여러 개 쓰는 가장 큰 이유는?",
+      choices: ["여러 가지 관계를 동시에 보려고", "계산을 줄이려고", "단어 수를 늘리려고"],
+      answer: 0,
+      explain: "헤드 하나는 비율을 한 가지로만 정해요. 여러 헤드가 각자 다른 관계를 봐요.",
+      review: "s2",
+    },
+    {
+      q: "GPT-3의 한 층에는 헤드가 몇 개 있을까요?",
+      choices: ["12개", "96개", "128개"],
+      answer: 1,
+      explain: "96개예요. 헤드 하나가 128칸이라 96 × 128 = 12,288칸이에요.",
+      review: "s6",
+    },
+    {
+      q: "헤드마다 무엇을 볼지는 어떻게 정해질까요?",
+      choices: ["사람이 규칙으로 정한다", "학습하면서 저절로 나뉜다", "단어 순서대로 정해진다"],
+      answer: 1,
+      explain: "Q, K, V를 만드는 행렬이 학습으로 정해지니까, 역할도 학습으로 나뉘어요(46장).",
+      review: "s7",
+    },
+  ],
+  labels: {
+    tag: "52장 여러 눈으로 보기",
+    // symbols drawn directly in the scene, listed so their font slices load
+    glyphs: "·",
+    many: "한 문장, 여러 가지 관계",
+    wants: "'간다'는 셋 다 알고 싶어요",
+    who: "누가?",
+    when: "언제?",
+    where: "어디로?",
+    oneHead: "어텐션 한 번 = 비율 한 줄",
+    oneWay: "한 가지 기준으로만",
+    sets: "Q, K, V 세트를 여러 개",
+    head: "헤드",
+    headEn: "헤드 (head)",
+    differ: "같은 '간다', 다른 눈",
+    parallel: "동시에, 따로따로",
+    result: "결과",
+    concat: "이어 붙이기",
+    mixM: "× 행렬 (섞기)",
+    final: "새 '간다'",
+    gather: "여러 눈의 정보가 한 벡터로",
+    gpt3: "GPT-3 한 층",
+    heads96: "헤드 96개",
+    dim128: "헤드 하나 = 128칸",
+    product: "96 × 128 = 12,288",
+    tokenVec: "= 단어 벡터 크기 (33장)",
+    learned: "역할은 학습으로 저절로",
+    next: "다음 장: 53장 진짜 GPT 머릿속 들여다보기",
+    ex: "설명용 예시",
+    q: "Q",
+    k: "K",
+    v: "V",
+    w0: "나는",
+    w1: "오늘",
+    w2: "학교에",
+    w3: "간다",
+  },
+};

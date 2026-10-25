@@ -1,0 +1,70 @@
+/* Part 5 playgrounds (어텐션). Every selector starts with .p5- */
+
+/* 44 RaceLab */
+.p5-lanes { margin-top: 14px; display: grid; gap: 14px; }
+.p5-lane { display: grid; gap: 6px; }
+.p5-lane-head { display: flex; justify-content: space-between; gap: 10px; font-size: 15px; }
+.p5-lane-head .num { color: var(--ink-2); font-variant-numeric: tabular-nums; }
+.p5-boxes { display: flex; flex-wrap: wrap; gap: 4px; }
+.p5-box { width: 22px; height: 22px; border-radius: 5px; border: 1.5px solid var(--line); background: var(--paper-2); transition: background 200ms ease; }
+.p5-box[data-state="now"] { background: var(--hl-sky); border-color: var(--ink); }
+.p5-box[data-state="done"] { background: var(--hl-sky); border-color: var(--ink-3); }
+.p5-box.tf[data-state="done"] { background: var(--hl-yellow); }
+
+/* shared: word picker, vectors, small matrices */
+.p5-words { display: flex; flex-wrap: wrap; gap: 6px; }
+.p5-words button { min-height: 44px; padding: 0 14px; border-radius: 10px; border: 1.5px solid var(--line); background: var(--paper); cursor: pointer; font: inherit; font-size: 17px; color: var(--ink); }
+.p5-words button[aria-pressed="true"] { background: var(--hl-yellow); color: var(--chip-ink); border-color: var(--ink); }
+.p5-note { margin: 8px 0 0; font-size: 13px; color: var(--ink-3); }
+.p5-ex { display: inline-block; font-size: 12px; color: var(--ink-3); border: 1px dashed var(--ink-3); border-radius: 6px; padding: 0 6px; margin-left: 6px; vertical-align: 2px; }
+.p5-vec { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+.p5-card { display: grid; grid-template-columns: 2.2em minmax(0, 1fr); align-items: stretch; border: 1.5px solid var(--ink-3); border-radius: 10px; overflow: hidden; background: var(--paper); }
+.p5-card > b { display: grid; place-items: center; color: var(--chip-ink); font-size: 16px; }
+.p5-card > span { padding: 6px 10px; font-size: 14px; line-height: 1.5; min-width: 0; overflow-wrap: anywhere; }
+.p5-cards { margin-top: 12px; display: grid; gap: 8px; }
+
+/* 46 stepper matrix */
+.p5-mat { display: inline-grid; grid-template-columns: repeat(2, auto); gap: 6px 10px; padding: 6px 12px; border-left: 3px solid var(--ink); border-right: 3px solid var(--ink); border-radius: 6px; }
+.p5-step { display: inline-flex; align-items: center; gap: 2px; }
+.p5-step button { width: 40px; height: 40px; border-radius: 10px; border: 1.5px solid var(--line); background: var(--paper); cursor: pointer; font-size: 18px; color: var(--ink); }
+.p5-step button:disabled { opacity: 0.35; cursor: default; }
+.p5-step b { min-width: 1.8em; text-align: center; font-family: var(--font-mono); font-size: 18px; }
+.p5-matrow { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; margin-top: 12px; }
+
+/* tables (47, 50, 51) */
+.p5-table-wrap { margin-top: 12px; max-width: 100%; }
+.p5-table { border-collapse: separate; border-spacing: 4px; font-variant-numeric: tabular-nums; width: 100%; table-layout: fixed; }
+.p5-table th { font-size: 13px; font-weight: 500; color: var(--ink-2); padding: 0; overflow-wrap: anywhere; }
+.p5-table th.row { text-align: right; padding-right: 4px; width: 3.6em; }
+.p5-table td { height: 42px; padding: 0; text-align: center; border-radius: 8px; background: var(--paper-2); font-family: var(--font-mono); font-size: 14px; }
+.p5-table td button { width: 100%; height: 100%; min-height: 42px; border: 0; border-radius: 8px; background: transparent; font: inherit; color: inherit; cursor: pointer; }
+.p5-table td[data-hl="true"] { outline: 2.5px solid var(--pen); outline-offset: -2px; }
+.p5-table td[data-masked="true"] { background: var(--ink-3); color: var(--paper); }
+.p5-table td[data-dim="true"] { opacity: 0.35; }
+.p5-calc { margin-top: 10px; font-family: var(--font-mono); font-size: 15px; line-height: 1.7; padding: 10px 14px; border-radius: 12px; background: var(--paper-2); overflow-wrap: anywhere; }
+
+/* plane labs (47, 49) */
+.p5-plane { width: 100%; max-width: 340px; display: block; touch-action: none; }
+.p5-plane .handle { cursor: grab; }
+
+/* 49 paint cup */
+.p5-cup { width: 84px; height: 84px; border-radius: 0 0 26px 26px; border: 3px solid var(--ink); border-top-width: 0; box-sizing: border-box; transition: background 300ms ease; }
+.p5-paint { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+
+/* 48 / 53 option buttons */
+.p5-seg { display: flex; flex-wrap: wrap; gap: 6px; }
+.p5-seg button { min-height: 40px; min-width: 44px; padding: 0 12px; border-radius: 10px; border: 1.5px solid var(--line); background: var(--paper); cursor: pointer; font: inherit; font-size: 15px; color: var(--ink); }
+.p5-seg button[aria-pressed="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.p5-toggle { display: flex; align-items: center; gap: 10px; min-height: 44px; font-size: 15px; }
+.p5-toggle input { width: 22px; height: 22px; accent-color: var(--ink); }
+
+/* 52 / 53 heat maps */
+.p5-heat { width: 100%; max-width: 420px; display: block; }
+.p5-heat .cell { cursor: pointer; }
+.p5-legend { display: flex; flex-wrap: wrap; gap: 4px 14px; font-size: 13px; color: var(--ink-2); margin-top: 6px; }
+.p5-quiz { margin-top: 12px; display: grid; gap: 8px; }
+.p5-quiz button { min-height: 44px; text-align: left; padding: 8px 14px; border-radius: 12px; border: 1.5px solid var(--line); background: var(--paper); cursor: pointer; font: inherit; font-size: 15px; color: var(--ink); }
+.p5-quiz button[data-state="right"] { border-color: var(--ink); background: var(--hl-mint); color: var(--chip-ink); }
+.p5-quiz button[data-state="wrong"] { border-style: dashed; color: var(--ink-3); }
+.p5-src { margin-top: 8px; font-size: 13px; color: var(--ink-2); }
+.p5-fit .norm-row { grid-template-columns: 3.8em minmax(0, 1fr) 2.8em; }

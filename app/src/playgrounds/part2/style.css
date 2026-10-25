@@ -1,0 +1,96 @@
+/* Part 2 playgrounds (16–27). Every selector starts with .p2- */
+
+/* store list (16, 20) */
+.p2-stores { display: grid; gap: 6px; margin-top: 14px; }
+.p2-store-head, .p2-store {
+  display: grid;
+  grid-template-columns: 1.8rem minmax(0, 1fr) 4.8rem 4rem;
+  gap: 8px;
+  align-items: center;
+}
+.p2-store-head { font-size: 13px; color: var(--ink-2); padding: 0 10px; }
+.p2-store {
+  min-height: 48px;
+  padding: 6px 10px;
+  border: 1.5px solid var(--line);
+  border-radius: 12px;
+  background: var(--paper);
+  text-align: left;
+  font: inherit;
+  font-size: 15px;
+  color: var(--ink);
+  cursor: pointer;
+}
+.p2-store[aria-pressed="true"] { border-color: var(--ink); background: var(--paper-2); }
+.p2-store .name { font-weight: 700; white-space: nowrap; }
+.p2-store .ins { font-family: var(--font-mono); font-size: 14px; color: var(--ink-2); overflow-wrap: anywhere; }
+.p2-store .score { font-family: var(--font-mono); font-size: 14px; text-align: center; border-radius: 8px; padding: 2px 4px; color: var(--chip-ink); }
+.p2-store .friend { font-size: 14px; white-space: nowrap; }
+.p2-mark { font-family: var(--font-hand); font-size: 20px; color: var(--pen); margin-left: 4px; }
+.p2-mark.ok { color: var(--ink); }
+
+.p2-calc { margin: 12px 0 0; padding: 10px 12px; border-radius: 12px; background: var(--paper-2); font-family: var(--font-mono); font-size: 14px; line-height: 1.6; overflow-wrap: anywhere; }
+.p2-calc b { font-size: 17px; }
+.p2-note { margin: 8px 0 0; font-size: 13px; color: var(--ink-3); }
+.p2-sliders .lab-row { grid-template-columns: 6.6em minmax(0, 1fr) 3.2em; }
+
+/* network drawings (19, 23) */
+.p2-net { width: 100%; max-width: 400px; display: block; margin: 14px auto 0; }
+.p2-halo { paint-order: stroke; stroke: var(--paper); stroke-width: 3px; stroke-linejoin: round; }
+
+/* 20: loss rows */
+.p2-loss { display: grid; gap: 14px; }
+.p2-loss-row { display: grid; gap: 2px; }
+.p2-loss-head { font-size: 14px; color: var(--ink-2); overflow-wrap: anywhere; }
+.p2-loss-head b { color: var(--ink); }
+.p2-ruler { width: 100%; max-width: 420px; display: block; }
+.p2-loss-row input[type="range"] { width: 100%; max-width: 420px; accent-color: var(--ink); min-height: 32px; }
+.p2-loss-sum { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 6px 12px; align-items: baseline; font-size: 15px; }
+.p2-loss-sum b { font-family: var(--font-mono); text-align: right; }
+.p2-loss-big { font-size: 22px; background: var(--hl-yellow); color: var(--chip-ink); border-radius: 8px; padding: 0 8px; }
+.p2-ball { transition: cx 260ms ease-out, cy 260ms ease-out; }
+
+/* 23: knob list with 책임 bars */
+.p2-knobs { margin-top: 12px; display: grid; gap: 6px; }
+@media (min-width: 560px) { .p2-knobs { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); } }
+.p2-knob {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 3.6em;
+  grid-template-areas: "lbl val" "bar g";
+  gap: 2px 8px;
+  align-items: center;
+  min-height: 48px;
+  padding: 6px 10px;
+  border: 1.5px solid var(--line);
+  border-radius: 12px;
+  background: var(--paper);
+  color: var(--ink);
+  font: inherit;
+  font-size: 14px;
+  text-align: left;
+  cursor: pointer;
+}
+.p2-knob[aria-pressed="true"] { border-color: var(--pen); background: var(--paper-2); }
+.p2-knob .lbl { grid-area: lbl; overflow-wrap: anywhere; }
+.p2-knob .val { grid-area: val; text-align: right; font-family: var(--font-mono); }
+.p2-knob .bar { grid-area: bar; height: 8px; border-radius: 4px; background: var(--paper-2); overflow: hidden; }
+.p2-knob .bar span { display: block; height: 100%; border-radius: 4px; background: var(--pen); transition: width 400ms ease-out; }
+.p2-knob .g { grid-area: g; text-align: right; font-family: var(--font-mono); color: var(--pen); }
+
+/* 26: drawing pad */
+.p2-pad { display: grid; gap: 4px; justify-items: start; min-width: 0; }
+.p2-pad canvas { display: block; width: 100%; max-width: 320px; aspect-ratio: 1; touch-action: none; border-radius: 16px; border: 2px dashed var(--ink-3); background: var(--paper-2); cursor: crosshair; }
+.p2-seen { display: flex; gap: 12px; align-items: center; }
+.p2-seen canvas { flex: none; width: 84px; height: 84px; image-rendering: pixelated; border-radius: 8px; background: var(--paper-2); border: 1.5px solid var(--line); }
+.p2-seen .p2-note { margin: 0; }
+.p2-digit-row { grid-template-columns: 1.6em minmax(0, 1fr) 3.8em; }
+.p2-digit-row .label { font-family: var(--font-mono); text-align: center; }
+.p2-digit-row[data-best="true"] .label { font-weight: 700; color: var(--pen); }
+
+/* 27: boss trainer */
+.p2-boss-plot { position: relative; width: 100%; max-width: 360px; aspect-ratio: 300 / 250; border-radius: 12px; overflow: hidden; border: 1.5px solid var(--line); background: var(--paper); }
+.p2-boss-plot canvas, .p2-boss-plot svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.p2-boss-row { display: grid; grid-template-columns: 3.6em minmax(0, 1fr); gap: 8px; align-items: center; }
+.p2-boss-row .ctx-presets { margin-top: 0; }
+.p2-boss-row .ctx-presets button { min-height: 40px; min-width: 44px; }
+.p2-boss-loss { width: 100%; max-width: 360px; height: auto; display: block; }

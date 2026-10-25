@@ -1,0 +1,165 @@
+/* Part 8 playgrounds (chapters 72–79). Every selector starts with .p8- */
+
+@keyframes p8-in {
+  from { opacity: 0; translate: 0 6px; }
+  to { opacity: 1; translate: 0 0; }
+}
+
+.p8-seg { display: flex; flex-wrap: wrap; gap: 6px; }
+.p8-seg button {
+  min-height: 40px;
+  padding: 0 12px;
+  border-radius: 10px;
+  border: 1.5px solid var(--line);
+  background: var(--paper);
+  cursor: pointer;
+  font-size: 15px;
+}
+.p8-seg button[aria-pressed="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+
+.p8-label { margin: 14px 0 6px; font-size: 14px; color: var(--ink-2); }
+
+.p8-grid2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.p8-opt {
+  min-height: 48px;
+  padding: 8px 12px;
+  border: 1.5px solid var(--line);
+  border-radius: 12px;
+  background: var(--paper);
+  cursor: pointer;
+  text-align: left;
+  line-height: 1.35;
+  font-size: 15px;
+}
+.p8-opt:hover { border-color: var(--ink-3); }
+.p8-opt[aria-pressed="true"] { border-color: var(--ink); background: var(--hl-yellow); color: var(--chip-ink); }
+.p8-opt .p8-sub { display: block; font-size: 12px; color: var(--ink-2); }
+.p8-opt[aria-pressed="true"] .p8-sub { color: var(--chip-ink); opacity: 0.8; }
+
+.p8-doc {
+  margin-top: 14px;
+  padding: 12px 14px;
+  border: 1.5px solid var(--ink);
+  border-radius: 8px;
+  background: var(--paper);
+  box-shadow: 5px 5px 0 var(--grid-major);
+  font-size: 16px;
+  line-height: 1.7;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.p8-doc .p8-cont { background: var(--hl-mint); color: var(--chip-ink); border-radius: 4px; padding: 1px 2px; animation: p8-in 420ms ease-out both; }
+.p8-doc .p8-role { font-family: var(--font-mono); font-size: 13px; background: var(--ink); color: var(--paper); border-radius: 5px; padding: 1px 5px; margin-right: 4px; }
+.p8-doc .p8-role.sys { background: var(--hl-violet); color: var(--chip-ink); }
+.p8-doc .p8-hidden { color: var(--ink-2); }
+.p8-doc-cap { margin: 8px 0 0; font-size: 13px; color: var(--ink-2); }
+
+.p8-meter { margin-top: 14px; display: grid; grid-template-columns: minmax(0, 1fr) 3.4em; gap: 10px; align-items: center; font-size: 15px; }
+.p8-meter .p8-name { grid-column: 1 / -1; font-size: 14px; color: var(--ink-2); }
+.p8-track { height: 14px; border-radius: 7px; background: var(--paper-2); overflow: hidden; }
+.p8-fill { display: block; height: 100%; border-radius: 7px; transition: width 600ms cubic-bezier(0.22, 1, 0.36, 1); }
+.p8-meter .p8-val { text-align: right; font-variant-numeric: tabular-nums; }
+
+/* ch73 style packs */
+.p8-cards { margin-top: 10px; display: grid; gap: 8px; }
+.p8-card { padding: 10px 12px; border-radius: 12px; background: var(--paper-2); font-size: 15px; line-height: 1.5; }
+.p8-card .p8-q { font-weight: 700; }
+.p8-card .p8-a { margin-top: 2px; }
+.p8-progress { margin-top: 12px; height: 10px; border-radius: 5px; background: var(--paper-2); overflow: hidden; }
+.p8-progress span { display: block; height: 100%; background: var(--hl-violet); border-radius: 5px; }
+.p8-chat { margin-top: 12px; display: grid; gap: 8px; }
+.p8-bubble { max-width: 88%; padding: 8px 14px; border-radius: 18px 18px 18px 6px; background: var(--paper-2); border: 1.5px solid var(--line); line-height: 1.5; animation: p8-in 420ms ease-out both; }
+.p8-bubble.user { justify-self: end; border-radius: 18px 18px 6px 18px; background: var(--hl-sky); color: var(--chip-ink); border-color: transparent; }
+.p8-bubble .p8-who { display: block; font-size: 12px; color: var(--ink-2); }
+.p8-bubble.user .p8-who { color: var(--chip-ink); opacity: 0.75; }
+
+/* ch74 ranking */
+.p8-q-head { font-weight: 700; font-size: 17px; }
+.p8-answers { margin-top: 10px; display: grid; gap: 8px; }
+.p8-ans {
+  display: grid;
+  grid-template-columns: 2.2em minmax(0, 1fr) 2.6em;
+  gap: 8px;
+  align-items: center;
+  min-height: 52px;
+  padding: 8px 10px;
+  border: 1.5px solid var(--line);
+  border-radius: 12px;
+  background: var(--paper);
+  cursor: pointer;
+  text-align: left;
+  line-height: 1.45;
+  font-size: 15px;
+}
+.p8-ans:hover:not(:disabled) { border-color: var(--ink-3); }
+.p8-ans:disabled { cursor: default; }
+.p8-ans .p8-letter { display: grid; place-items: center; width: 1.9em; height: 1.9em; border-radius: 50%; background: var(--paper-2); font-weight: 700; }
+.p8-ans .p8-rank { justify-self: end; font-family: var(--font-hand); font-size: 22px; color: var(--pen); }
+.p8-ans[data-ranked="true"] { border-color: var(--ink); background: var(--paper-2); }
+.p8-pairs { margin-top: 12px; display: grid; gap: 6px; }
+.p8-pair { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); gap: 8px; align-items: center; padding: 6px 10px; border-radius: 10px; background: var(--paper-2); font-size: 14px; animation: p8-in 420ms ease-out both; }
+.p8-pair .p8-win { background: var(--hl-mint); color: var(--chip-ink); border-radius: 6px; padding: 2px 6px; min-width: 0; overflow-wrap: anywhere; }
+.p8-pair .p8-lose { background: var(--paper); border: 1px solid var(--line); border-radius: 6px; padding: 2px 6px; min-width: 0; overflow-wrap: anywhere; }
+.p8-pair .p8-gt { font-weight: 700; }
+.p8-count { margin-top: 10px; font-size: 15px; }
+.p8-count b { font-variant-numeric: tabular-nums; }
+
+/* ch75 reward model */
+.p8-weights { display: grid; gap: 10px; }
+.p8-weight { display: grid; grid-template-columns: minmax(0, 1fr) 3.4em; gap: 4px 10px; align-items: center; font-size: 15px; }
+.p8-weight input { grid-column: 1 / -1; width: 100%; accent-color: var(--ink); min-height: 32px; }
+.p8-weight b { text-align: right; font-family: var(--font-mono); font-weight: 500; }
+.p8-scored { display: grid; gap: 6px; }
+.p8-srow { display: grid; grid-template-columns: minmax(0, 1fr) 3.6em 1.6em; gap: 8px; align-items: center; padding: 6px 10px; border-radius: 10px; background: var(--paper-2); font-size: 14px; line-height: 1.45; }
+.p8-srow .p8-num { text-align: right; font-family: var(--font-mono); }
+.p8-srow .p8-ok { font-weight: 700; text-align: center; }
+.p8-srow .p8-ok.bad { color: var(--pen); }
+.p8-feat { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 3px; }
+.p8-feat span { font-size: 12px; border-radius: 5px; padding: 0 5px; background: var(--paper); border: 1px solid var(--line); color: var(--ink-2); }
+.p8-feat span.on { background: var(--hl-yellow); border-color: transparent; color: var(--chip-ink); }
+.p8-feat span.on.neg { background: var(--hl-pink); }
+.p8-h4 { margin: 18px 0 8px; font-size: 14px; color: var(--ink-2); font-weight: 500; }
+
+/* ch76 leash */
+.p8-range { display: grid; grid-template-columns: minmax(0, 1fr) 4.2em; gap: 4px 10px; align-items: center; font-size: 15px; }
+.p8-range input { grid-column: 1 / -1; width: 100%; accent-color: var(--ink); min-height: 32px; }
+.p8-range b { text-align: right; font-weight: 500; }
+.p8-ends { grid-column: 1 / -1; display: flex; justify-content: space-between; font-size: 12px; color: var(--ink-2); }
+.p8-dist { margin-top: 12px; display: grid; gap: 10px; }
+.p8-drow { display: grid; grid-template-columns: minmax(0, 1fr) 3.2em; gap: 4px 10px; align-items: center; font-size: 14px; }
+.p8-drow .p8-txt { grid-column: 1 / -1; line-height: 1.45; }
+.p8-drow .p8-txt small { color: var(--ink-2); }
+.p8-twin { position: relative; height: 16px; border-radius: 8px; background: var(--paper-2); overflow: hidden; }
+.p8-twin .p8-ghost { position: absolute; left: 0; top: 0; bottom: 0; border-right: 2.5px dashed var(--ink-3); }
+.p8-twin .p8-now { position: absolute; left: 0; top: 3px; bottom: 3px; border-radius: 5px; }
+.p8-drow .p8-val { text-align: right; font-variant-numeric: tabular-nums; }
+.p8-stats { margin-top: 14px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.p8-stat { padding: 10px 12px; border-radius: 12px; background: var(--paper-2); font-size: 13px; color: var(--ink-2); }
+.p8-stat b { display: block; font-size: 22px; color: var(--ink); font-variant-numeric: tabular-nums; }
+
+/* ch78 race */
+.p8-guess { display: grid; gap: 6px; }
+.p8-guess input { width: 100%; accent-color: var(--ink); min-height: 32px; }
+.p8-guess .p8-big { font-size: 22px; font-weight: 700; }
+.p8-race { margin-top: 12px; display: grid; gap: 8px; }
+.p8-lane { display: grid; grid-template-columns: 6.4em minmax(0, 1fr); gap: 4px 10px; align-items: center; font-size: 14px; }
+.p8-lane .p8-track { height: 18px; border-radius: 9px; }
+.p8-lane .p8-fill { transition: width 900ms cubic-bezier(0.22, 1, 0.36, 1); min-width: 4px; }
+.p8-lane .p8-when { grid-column: 2; font-size: 12px; color: var(--ink-2); }
+
+/* ch79 sorting */
+.p8-req { padding: 14px; border-radius: 14px; background: var(--paper-2); font-size: 17px; font-weight: 500; line-height: 1.5; animation: p8-in 420ms ease-out both; }
+.p8-req small { display: block; font-size: 13px; font-weight: 400; color: var(--ink-2); }
+.p8-bins { margin-top: 10px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.p8-bins button { min-height: 52px; border-radius: 12px; border: 1.5px solid var(--ink); background: var(--paper); cursor: pointer; font-weight: 700; }
+.p8-bins button.help { background: var(--hl-mint); color: var(--chip-ink); }
+.p8-bins button.no { background: var(--hl-pink); color: var(--chip-ink); }
+.p8-sorted { margin-top: 14px; display: grid; gap: 6px; }
+.p8-sorted-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 4px 8px; align-items: center; padding: 8px 10px; border-radius: 10px; background: var(--paper-2); font-size: 14px; line-height: 1.45; }
+.p8-sorted-row .p8-why { grid-column: 1 / -1; font-size: 13px; color: var(--ink-2); }
+.p8-tag { font-size: 12px; padding: 1px 6px; border-radius: 6px; color: var(--chip-ink); white-space: nowrap; }
+.p8-tag.help { background: var(--hl-mint); }
+.p8-tag.no { background: var(--hl-pink); }
+.p8-tag.bad { outline: 2px solid var(--pen); }
+.p8-seg button:disabled { opacity: 0.45; cursor: default; }
+.p8-opt:disabled { opacity: 0.45; cursor: default; }

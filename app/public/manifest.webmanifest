@@ -1,0 +1,16 @@
+{
+  "name": "AI 해부교실",
+  "short_name": "AI 해부교실",
+  "description": "ChatGPT는 어떻게 만들어졌을까. 고1 눈높이의 96장 애니메이션 강의.",
+  "lang": "ko",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#fbfcfe",
+  "theme_color": "#fbfcfe",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "icons/maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
