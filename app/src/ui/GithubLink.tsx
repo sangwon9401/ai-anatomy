@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { REPO_URL } from "../site";
 import { T } from "./strings";
 
@@ -9,14 +8,6 @@ export const GithubMark = ({ size = 18 }: { size?: number }) => (
   </svg>
 );
 
-// one request per visit: GitHub's public API allows 60 an hour per visitor without a token
-let stars: Promise<number | null> | null = null;
-const fetchStars = () =>
-  (stars ??= fetch(REPO_URL.replace("https://github.com/", "https://api.github.com/repos/"))
-    .then((r) => (r.ok ? r.json() : null))
-    .then((d) => (typeof d?.stargazers_count === "number" ? d.stargazers_count : null))
-    .catch(() => null));
-
 /** Icon button for the chapter page's top bar. */
 export const GithubIconLink = () => (
   <a className="icon-btn" href={REPO_URL} target="_blank" rel="noopener" aria-label={T.githubStar} title={T.githubStar}>
@@ -24,21 +15,9 @@ export const GithubIconLink = () => (
   </a>
 );
 
-/** "Star on GitHub" pill with the current star count, for the home page. */
-export function GithubStarButton() {
-  const [count, setCount] = useState<number | null>(null);
-  useEffect(() => {
-    let live = true;
-    fetchStars().then((n) => live && setCount(n));
-    return () => {
-      live = false;
-    };
-  }, []);
-  return (
-    <a className="gh-star" href={REPO_URL} target="_blank" rel="noopener">
-      <GithubMark size={16} />
-      {T.githubStar}
-      {count !== null && count > 0 && <span className="gh-count">★ {count.toLocaleString()}</span>}
-    </a>
-  );
-}
+/** The same icon for the home page header. */
+export const GithubStarButton = () => (
+  <a className="gh-star" href={REPO_URL} target="_blank" rel="noopener" aria-label={T.githubStar} title={T.githubStar}>
+    <GithubMark size={18} />
+  </a>
+);
