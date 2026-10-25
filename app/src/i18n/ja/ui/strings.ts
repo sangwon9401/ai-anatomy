@@ -26,6 +26,7 @@ export const T = {
   core: "重要",
   done: "修了",
   last: "さっき見た章",
+  githubStar: "GitHubでスターする",
   languages: "言語",
 
   // chapter page

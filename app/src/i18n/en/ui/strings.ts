@@ -26,6 +26,7 @@ export const T = {
   core: "core",
   done: "finished",
   last: "you were here",
+  githubStar: "Star on GitHub",
   languages: "Languages",
 
   // chapter page

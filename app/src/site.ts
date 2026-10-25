@@ -7,6 +7,7 @@ const LANGS = META as Record<string, Meta>;
 
 /** Root of the public website; each language lives under it (Korean at the root, others at /en/, /ja/, /zh/). */
 export const SITE_ROOT = "https://sangwon9401.github.io/ai-anatomy/";
+export const REPO_URL = "https://github.com/sangwon9401/ai-anatomy";
 export const siteUrlFor = (locale: string) => `${SITE_ROOT}${locale === "ko" ? "" : `${locale}/`}`;
 /** This language's site. Share links point here, also when shared from inside the Android app. */
 export const SITE_URL = siteUrlFor(LOCALE);

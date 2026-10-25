@@ -30,6 +30,7 @@ import { PART10_PLAYGROUNDS } from "../playgrounds/part10";
 import { PART11_PLAYGROUNDS } from "../playgrounds/part11";
 import { BUILT, compId, type BuiltChapter } from "../scenes/registry";
 import { SITE_NAME, chapterUrl } from "../site";
+import { GithubIconLink } from "./GithubLink";
 import { markDone, markSeen } from "./progress";
 import { shareLink, type ShareResult } from "./share";
 import { T } from "./strings";
@@ -129,6 +130,7 @@ export function ChapterPage({ built }: { built: BuiltChapter }) {
         <button className="icon-btn" onClick={share} aria-label={T.share}>
           <Share2 size={18} />
         </button>
+        <GithubIconLink />
       </nav>
       {shared === "copied" && <p className="share-note">{T.shareCopied}</p>}
       {shared === "failed" && <p className="share-note">{T.shareFailed}</p>}

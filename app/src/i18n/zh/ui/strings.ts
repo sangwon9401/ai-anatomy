@@ -26,6 +26,7 @@ export const T = {
   core: "核心",
   done: "已学完",
   last: "刚才看的",
+  githubStar: "在 GitHub 上点星",
   languages: "语言",
 
   // chapter page

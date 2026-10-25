@@ -26,6 +26,7 @@ export const T = {
   core: "핵심",
   done: "끝냄",
   last: "방금 본 장",
+  githubStar: "GitHub에서 별 주기",
   languages: "언어",
 
   // chapter page

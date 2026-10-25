@@ -4,6 +4,7 @@ import { BUILT, builtById, compId } from "../scenes/registry";
 import { Capacitor } from "@capacitor/core";
 import { LOCALE } from "../locale";
 import { PUBLISHED, SITE_NAME } from "../site";
+import { GithubStarButton } from "./GithubLink";
 import { loadProgress } from "./progress";
 import { T } from "./strings";
 
@@ -23,7 +24,10 @@ export function Home({ from }: { from: number | null }) {
           {SITE_NAME}
           <small>{T.tagline}</small>
         </div>
-        <span className="badge">{T.badge}</span>
+        <span className="home-actions">
+          <GithubStarButton />
+          <span className="badge">{T.badge}</span>
+        </span>
       </header>
       {PUBLISHED.length > 1 && !Capacitor.isNativePlatform() && (
         <nav className="langs" aria-label={T.languages}>
