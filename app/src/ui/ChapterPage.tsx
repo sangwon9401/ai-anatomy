@@ -32,15 +32,16 @@ import { BUILT, compId, type BuiltChapter } from "../scenes/registry";
 import { SITE_NAME, chapterUrl } from "../site";
 import { markDone, markSeen } from "./progress";
 import { shareLink, type ShareResult } from "./share";
+import { T } from "./strings";
 import { Quiz } from "./Quiz";
 import { ScenePlayer, type ScenePlayerHandle } from "./ScenePlayer";
 
 const TIMELINE: OrderItem[] = ORDER_ITEMS.map((i) => ({ key: i.key, label: i.label, meta: i.year }));
 const BLUEPRINT: OrderItem[] = PIPELINE.map((p) => ({ key: p.key, label: `${p.name}: ${p.does}`, meta: p.where }));
 
-const TimelineOrder: FC = () => <OrderGame items={TIMELINE} wrongHint="그보다 먼저 일어난 일이 있어요." doneText="연표 완성!" />;
+const TimelineOrder: FC = () => <OrderGame items={TIMELINE} wrongHint={T.timelineWrong} doneText={T.timelineDone} />;
 const BlueprintOrder: FC = () => (
-  <OrderGame items={BLUEPRINT} wrongHint="글이 그 부품에 닿기 전에 먼저 지나는 부품이 있어요." doneText="설계도 완성!" />
+  <OrderGame items={BLUEPRINT} wrongHint={T.blueprintWrong} doneText={T.blueprintDone} />
 );
 
 const PLAYGROUNDS: Record<number, FC> = {
@@ -74,7 +75,7 @@ const PLAYGROUNDS: Record<number, FC> = {
 
 const ChapterLink: FC<{ to?: BuiltChapter; label: string; children: ReactNode }> = ({ to, label, children }) =>
   to ? (
-    <a className="icon-btn" href={`#${compId(to.spec.id)}`} aria-label={`${label}: ${to.spec.id}장 ${to.spec.title}`}>
+    <a className="icon-btn" href={`#${compId(to.spec.id)}`} aria-label={`${label}: ${T.chTitle(to.spec.id, to.spec.title)}`}>
       {children}
     </a>
   ) : (
@@ -94,7 +95,7 @@ export function ChapterPage({ built }: { built: BuiltChapter }) {
   const finish = useCallback(() => markDone(spec.id), [spec.id]);
   const [shared, setShared] = useState<ShareResult | null>(null);
   const share = async () => {
-    const result = await shareLink({ title: `${spec.id}장 ${spec.title} · ${SITE_NAME}`, text: spec.hook, url: chapterUrl(spec.id) });
+    const result = await shareLink({ title: `${T.chTitle(spec.id, spec.title)} · ${SITE_NAME}`, text: spec.hook, url: chapterUrl(spec.id) });
     setShared(result);
   };
 
@@ -111,33 +112,33 @@ export function ChapterPage({ built }: { built: BuiltChapter }) {
 
   return (
     <div className="wrap">
-      <nav className="ch-top" aria-label="장 이동">
+      <nav className="ch-top" aria-label={T.chapterNav}>
         <a href="#">
-          <ChevronLeft size={18} /> 목차
+          <ChevronLeft size={18} /> {T.toc}
         </a>
         <span className="spacer" />
-        <ChapterLink to={prev} label="이전">
+        <ChapterLink to={prev} label={T.prev}>
           <ChevronLeft size={20} />
         </ChapterLink>
         <span className="ch-pos">
           {spec.id} / {TOTAL_CHAPTERS}
         </span>
-        <ChapterLink to={next} label="다음">
+        <ChapterLink to={next} label={T.next}>
           <ChevronRight size={20} />
         </ChapterLink>
-        <button className="icon-btn" onClick={share} aria-label="이 장 공유하기">
+        <button className="icon-btn" onClick={share} aria-label={T.share}>
           <Share2 size={18} />
         </button>
       </nav>
-      {shared === "copied" && <p className="share-note">링크를 복사했어요. 친구에게 붙여 넣어 보내세요.</p>}
-      {shared === "failed" && <p className="share-note">공유하지 못했어요. 주소창의 링크를 복사해 보내 주세요.</p>}
+      {shared === "copied" && <p className="share-note">{T.shareCopied}</p>}
+      {shared === "failed" && <p className="share-note">{T.shareFailed}</p>}
       <header className="ch-head">
         <div className="ch-meta">
-          <span className="ch-num">{spec.id}장</span>
+          <span className="ch-num">{T.ch(spec.id)}</span>
           <span>
             Part {spec.part} {partTitle(spec.part)}
           </span>
-          {spec.core && <span className="badge">핵심 코스</span>}
+          {spec.core && <span className="badge">{T.coreCourse}</span>}
         </div>
         <h1>{spec.title}</h1>
         <p className="hook">
@@ -147,14 +148,14 @@ export function ChapterPage({ built }: { built: BuiltChapter }) {
       </header>
 
       <div className="ch-grid">
-        <section className="stage" id="stage" aria-label="애니메이션">
+        <section className="stage" id="stage" aria-label={T.animation}>
           <ScenePlayer ref={player} built={built} />
         </section>
 
         <div className="flow">
           <section id="play" aria-labelledby="play-title">
             <h2 className="section-title" id="play-title">
-              직접 해보기 <span className="hand">{spec.playgroundTitle}</span>
+              {T.playground} <span className="hand">{spec.playgroundTitle}</span>
             </h2>
             <div className="play-box">
               <p className="play-intro">{spec.playgroundIntro}</p>
@@ -164,7 +165,7 @@ export function ChapterPage({ built }: { built: BuiltChapter }) {
 
           <section aria-labelledby="sum-title">
             <h2 className="section-title" id="sum-title">
-              한 장 요약
+              {T.summary}
             </h2>
             <div className="summary-note">
               <ul>
@@ -174,23 +175,23 @@ export function ChapterPage({ built }: { built: BuiltChapter }) {
               </ul>
             </div>
             <div className="unlock">
-              {spec.unlockLabel ?? "설계도에 부품이 하나 채워졌어요"} <span className="chip hl-mint">{spec.unlocks}</span>
+              {spec.unlockLabel ?? T.unlockDefault} <span className="chip hl-mint">{spec.unlocks}</span>
             </div>
           </section>
 
           <section aria-labelledby="quiz-title">
             <h2 className="section-title" id="quiz-title">
-              확인 퀴즈 <span className="hand">{spec.quiz.length}문제</span>
+              {T.quiz} <span className="hand">{T.questions(spec.quiz.length)}</span>
             </h2>
             <Quiz items={spec.quiz} onReview={review} onComplete={finish} />
           </section>
 
-          <nav className="next-nav" aria-label="다음 장">
+          <nav className="next-nav" aria-label={T.nextChapter}>
             {next && (
               <a className="next-card" href={`#${compId(next.spec.id)}`}>
-                <span className="next-label">다음 장</span>
+                <span className="next-label">{T.nextChapter}</span>
                 <span className="next-title">
-                  {next.spec.id}장 {next.spec.title}
+                  {T.chTitle(next.spec.id, next.spec.title)}
                 </span>
                 <span className="next-hook">{next.spec.hook}</span>
                 <ChevronRight className="next-arrow" size={24} />
@@ -199,14 +200,14 @@ export function ChapterPage({ built }: { built: BuiltChapter }) {
             <div className="next-row">
               {prev && (
                 <a className="btn ghost" href={`#${compId(prev.spec.id)}`}>
-                  <ChevronLeft size={16} /> {prev.spec.id}장 {prev.spec.title}
+                  <ChevronLeft size={16} /> {T.chTitle(prev.spec.id, prev.spec.title)}
                 </a>
               )}
               <button className="btn ghost" onClick={share}>
-                <Share2 size={16} /> 이 장 공유하기
+                <Share2 size={16} /> {T.share}
               </button>
               <a className="btn ghost" href="#">
-                목차로
+                {T.toToc}
               </a>
             </div>
           </nav>

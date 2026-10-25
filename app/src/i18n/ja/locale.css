@@ -1,0 +1,6 @@
+:root {
+  --font-sans: "IBM Plex Sans JP", "Hiragino Sans", "Noto Sans JP", "Yu Gothic", system-ui, sans-serif;
+  --font-hand: "Klee One", "IBM Plex Sans JP", "Hiragino Sans", cursive;
+}
+/* Korean keeps words whole (keep-all); Japanese has no spaces, so it must break between characters */
+*, *::before, *::after { word-break: normal !important; line-break: strict; }

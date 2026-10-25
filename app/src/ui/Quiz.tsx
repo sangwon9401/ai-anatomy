@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import type { QuizItem } from "../data/types";
+import { T } from "./strings";
 
 const MARKS = ["①", "②", "③", "④"];
 
@@ -54,14 +55,14 @@ export function Quiz({ items, onReview, onComplete }: { items: QuizItem[]; onRev
             </div>
             {done && (
               <div className="q-feedback">
-                <span className="verdict">{ok ? "정답!" : `정답은 ${MARKS[it.answer]}`}</span>
+                <span className="verdict">{ok ? T.right : T.answerIs(MARKS[it.answer])}</span>
                 <p>{it.explain}</p>
                 <button className="btn ghost" onClick={() => onReview(it.review)}>
-                  {it.review === "playground" ? "직접 해보기로 가기" : "관련 장면 다시 보기"}
+                  {it.review === "playground" ? T.toPlayground : T.reviewScene}
                 </button>
                 {!ok && (
                   <button className="btn ghost" onClick={() => setPicked((prev) => prev.map((v, i) => (i === qi ? null : v)))}>
-                    다시 풀기
+                    {T.retry}
                   </button>
                 )}
               </div>
@@ -71,7 +72,7 @@ export function Quiz({ items, onReview, onComplete }: { items: QuizItem[]; onRev
       })}
       {answered === items.length && (
         <p className="q-score">
-          {items.length}문제 중 {right}문제 맞혔어요.
+          {T.score(right, items.length)}
         </p>
       )}
     </div>

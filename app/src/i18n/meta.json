@@ -1,0 +1,42 @@
+{
+  "ko": {
+    "ready": true,
+    "label": "한국어",
+    "lang": "ko",
+    "ogLocale": "ko_KR",
+    "name": "AI 해부교실",
+    "title": "AI 해부교실: ChatGPT는 어떻게 만들어졌을까",
+    "description": "고1 눈높이로 ChatGPT가 어떻게 만들어졌는지 96장의 애니메이션과 직접 해보기로 배워요. 토큰, 임베딩, 어텐션, 학습, RLHF까지.",
+    "fonts": "https://fonts.googleapis.com/css2?family=Gamja+Flower&family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans+KR:wght@400;500;700&display=swap"
+  },
+  "en": {
+    "ready": false,
+    "label": "English",
+    "lang": "en",
+    "ogLocale": "en_US",
+    "name": "AI Anatomy Class",
+    "title": "AI Anatomy Class: How was ChatGPT built?",
+    "description": "Learn how ChatGPT was built in 96 short animated chapters with hands-on experiments, written for high school students. Tokens, embeddings, attention, training and RLHF.",
+    "fonts": "https://fonts.googleapis.com/css2?family=Patrick+Hand&family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans:wght@400;500;700&display=swap"
+  },
+  "ja": {
+    "ready": false,
+    "label": "日本語",
+    "lang": "ja",
+    "ogLocale": "ja_JP",
+    "name": "AI解剖教室",
+    "title": "AI解剖教室：ChatGPTはどうやって作られたのか",
+    "description": "ChatGPTがどうやって作られたのかを、高校生向けの96章のアニメーションと体験で学びます。トークン、埋め込み、アテンション、学習、RLHFまで。",
+    "fonts": "https://fonts.googleapis.com/css2?family=Klee+One:wght@400;600&family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans+JP:wght@400;500;700&display=swap"
+  },
+  "zh": {
+    "ready": false,
+    "label": "中文",
+    "lang": "zh-Hans",
+    "ogLocale": "zh_CN",
+    "name": "AI解剖课堂",
+    "title": "AI解剖课堂：ChatGPT 是怎样造出来的",
+    "description": "用 96 章动画和动手实验，带高中生一步步弄懂 ChatGPT 是怎样造出来的：词元、嵌入、注意力、训练、RLHF。",
+    "fonts": "https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&family=IBM+Plex+Mono:wght@500&family=Noto+Sans+SC:wght@400;500;700&display=swap"
+  }
+}

@@ -1,6 +1,7 @@
 import { Composition, Folder, Still, staticFile } from "remotion";
 import NARRATION from "../data/narration.json";
 import "../styles.css";
+import "../locale.css";
 import { loadSceneFonts } from "../scenes/fonts";
 import { FPS, audioKey, totalFrames } from "../scenes/kit";
 import { BUILT, builtById, compId } from "../scenes/registry";

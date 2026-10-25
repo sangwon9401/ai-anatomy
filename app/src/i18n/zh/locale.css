@@ -1,0 +1,6 @@
+:root {
+  --font-sans: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+  --font-hand: "ZCOOL KuaiLe", "Noto Sans SC", "PingFang SC", cursive;
+}
+/* Korean keeps words whole (keep-all); Chinese has no spaces, so it must break between characters */
+*, *::before, *::after { word-break: normal !important; line-break: strict; }

@@ -72,11 +72,13 @@ export function beat(frame: number, step: TimedStep, start: number, dur = 0.6, e
 
 export const mix = (a: number, b: number, t: number) => a + (b - a) * t;
 
-/** Rough advance widths for IBM Plex Sans KR, good enough to lay chips out without measuring. */
+/** Rough advance widths for the scene fonts (IBM Plex Sans KR/JP, Noto Sans SC), good enough to lay chips out without measuring. */
 export function textWidth(text: string, fs: number) {
   let w = 0;
   for (const ch of text) {
     if (/[가-힣]/.test(ch)) w += fs * 0.94;
+    // kana, CJK ideographs and full-width punctuation are a full em
+    else if (/[\u3000-\u30ff\u3400-\u9fff\uf900-\ufaff\uff01-\uff60]/.test(ch)) w += fs;
     else if (/[0-9A-Za-z]/.test(ch)) w += fs * 0.58;
     else if (ch === " ") w += fs * 0.28;
     else w += fs * 0.36;

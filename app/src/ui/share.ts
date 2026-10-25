@@ -1,5 +1,6 @@
 import { Capacitor } from "@capacitor/core";
 import { Share } from "@capacitor/share";
+import { T } from "./strings";
 
 export type ShareResult = "shared" | "copied" | "cancelled" | "failed";
 
@@ -7,7 +8,7 @@ export type ShareResult = "shared" | "copied" | "cancelled" | "failed";
 export async function shareLink(data: { title: string; text: string; url: string }): Promise<ShareResult> {
   try {
     if (Capacitor.isNativePlatform()) {
-      await Share.share({ ...data, dialogTitle: "공유하기" });
+      await Share.share({ ...data, dialogTitle: T.shareDialog });
       return "shared";
     }
     if (navigator.share) {

@@ -5,6 +5,7 @@ import type { BuiltChapter } from "../scenes/built";
 import { builtById } from "../scenes/registry";
 import { H, Paper, W, buildTimeline } from "../scenes/kit";
 import { SITE_NAME } from "../site";
+import { T } from "../ui/strings";
 
 // Link-preview image (1200 × 630) for a chapter page: its title and question beside a still from its animation.
 export const OG_W = 1200;
@@ -17,8 +18,8 @@ export const ogFrame = (c: BuiltChapter, step?: number) => {
   return tl[step ?? Math.floor((tl.length - 1) / 2)].to - 1;
 };
 
-// the site's own card: ch61's opening blueprint with "나는 오늘 학교에 → ?"
-export const OG_HOME = { id: 61, step: 0, headline: "ChatGPT는 어떻게 만들어졌을까", sub: "고1을 위한 96장" };
+// the site's own card: ch61's opening blueprint with the course's running sentence
+export const OG_HOME = { id: 61, step: 0, headline: T.ogHomeHeadline, sub: T.ogHomeSub };
 
 export const OgCard: FC<{ id: number; step?: number; headline?: string; sub?: string }> = ({ id, step, headline, sub }) => {
   const chapter = builtById(id)!;
@@ -27,14 +28,14 @@ export const OgCard: FC<{ id: number; step?: number; headline?: string; sub?: st
     <AbsoluteFill>
       <Paper>
         <div style={{ position: "absolute", left: 64, top: 56, width: OG_W - W * SCALE - 120, display: "grid", gap: 22 }}>
-          <div style={{ display: "flex", alignItems: "center", gap: 14, fontSize: 28, fontWeight: 700 }}>
-            <span style={{ background: "var(--hl-yellow)", color: "var(--chip-ink)", borderRadius: 8, padding: "2px 12px" }}>{SITE_NAME}</span>
-            <span style={{ color: "var(--ink-2)", fontWeight: 500 }}>{sub ?? `Part ${spec.part} ${partTitle(spec.part)}`}</span>
+          <div style={{ display: "flex", alignItems: "center", flexWrap: "wrap", gap: "6px 14px", fontSize: 28, fontWeight: 700 }}>
+            <span style={{ background: "var(--hl-yellow)", color: "var(--chip-ink)", borderRadius: 8, padding: "2px 12px", whiteSpace: "nowrap" }}>{SITE_NAME}</span>
+            <span style={{ color: "var(--ink-2)", fontWeight: 500 }}>{sub ?? T.ogPart(spec.part, partTitle(spec.part))}</span>
           </div>
           <div style={{ fontSize: headline ? 60 : 64, fontWeight: 700, lineHeight: 1.22, wordBreak: "keep-all", letterSpacing: "-0.01em" }}>
             {headline ?? (
               <>
-                <span style={{ color: "var(--pen)" }}>{spec.id}장</span> {spec.title}
+                <span style={{ color: "var(--pen)" }}>{T.ch(spec.id)}</span> {spec.title}
               </>
             )}
           </div>

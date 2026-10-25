@@ -9,7 +9,7 @@
     "preview": "vite preview --host",
     "studio": "remotion studio src/remotion/index.ts",
     "render": "remotion render src/remotion/index.ts",
-    "build:pages": "tsc --noEmit && vite build --mode pages && node scripts/make-pages.mjs",
+    "build:pages": "tsc --noEmit && node scripts/build-pages.mjs",
     "og": "node scripts/og-images.mjs",
     "build:artifact": "tsc --noEmit && vite build --mode artifact && node scripts/make-artifact.mjs"
   },

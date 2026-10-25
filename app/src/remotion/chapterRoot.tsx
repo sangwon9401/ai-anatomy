@@ -1,5 +1,6 @@
 import { Composition } from "remotion";
 import "../styles.css";
+import "../locale.css";
 import { compId, type BuiltChapter } from "../scenes/built";
 import { loadSceneFonts } from "../scenes/fonts";
 import { FPS, H, W, totalFrames } from "../scenes/kit";

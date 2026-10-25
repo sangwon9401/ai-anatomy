@@ -173,6 +173,9 @@ h1, h2, h3 { text-wrap: balance; line-height: 1.3; margin: 0; }
 /* ---------- home ---------- */
 .home-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
 .wordmark { font-size: 22px; font-weight: 700; letter-spacing: -0.01em; }
+.langs { margin-top: 4px; display: flex; flex-wrap: wrap; gap: 0 16px; font-size: 14px; }
+.langs a { display: inline-flex; align-items: center; min-height: 36px; color: var(--ink-2); text-decoration: none; }
+.langs a[aria-current] { color: var(--ink); font-weight: 700; text-decoration: underline; text-underline-offset: 4px; }
 .wordmark small { font-weight: 400; color: var(--ink-2); font-size: 14px; margin-left: 8px; }
 
 .hero {

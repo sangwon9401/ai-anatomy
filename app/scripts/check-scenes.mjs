@@ -1,20 +1,29 @@
 // Render the last frame of every step of every chapter; flag frames that error or hang.
-// usage: OUT=out/check node scripts/check-scenes.mjs [firstId] [lastId]
+// usage: OUT=out/check node scripts/check-scenes.mjs [firstId] [lastId]      (LOCALE=en for a translation)
 import fs from "node:fs";
 import path from "node:path";
-import { bundle } from "@remotion/bundler";
+import { bundle, webpack } from "@remotion/bundler";
 import { getCompositions, openBrowser, renderStill } from "@remotion/renderer";
+import { overlayFor, webpackLocaleOverlay } from "./locale-overlay.mjs";
+
+const locale = process.env.LOCALE ?? "ko";
 
 const [lo = 1, hi = 96] = process.argv.slice(2).map(Number);
 const outDir = process.env.OUT;
 fs.mkdirSync(outDir, { recursive: true });
-const serveUrl = await bundle({ entryPoint: path.resolve("src/remotion/index.ts"), publicDir: path.resolve("src/assets"), enableCaching: false });
+const serveUrl = await bundle({
+  entryPoint: path.resolve("src/remotion/index.ts"),
+  publicDir: path.resolve("src/assets"),
+  enableCaching: false,
+  webpackOverride: webpackLocaleOverlay(locale, webpack),
+});
 const inputProps = { captions: true };
 const browser = await openBrowser("chrome");
 const comps = await getCompositions(serveUrl, { inputProps, puppeteerInstance: browser });
 
 function endsOf(n) {
-  const src = fs.readFileSync(`src/data/ch${String(n).padStart(2, "0")}.ts`, "utf8");
+  const base = path.resolve(`src/data/ch${String(n).padStart(2, "0")}.ts`);
+  const src = fs.readFileSync(overlayFor(locale, base) ?? base, "utf8");
   const secs = [...src.matchAll(/\{\s*id:\s*"s\d+",\s*sec:\s*([\d.]+)/g)].map((m) => Number(m[1]));
   let f = 0;
   return secs.map((s) => (f += Math.round(s * 30)) - 1);

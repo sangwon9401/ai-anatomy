@@ -4,6 +4,7 @@ import { forwardRef, useCallback, useEffect, useImperativeHandle, useMemo, useRe
 import { FPS, H, W, buildTimeline } from "../scenes/kit";
 import type { BuiltChapter } from "../scenes/registry";
 import { NARRATION_AUDIO } from "./narrationAudio";
+import { T } from "./strings";
 
 export type ScenePlayerHandle = { playStep: (id: string) => void };
 type Mode = "step" | "video";
@@ -99,7 +100,7 @@ export const ScenePlayer = forwardRef<ScenePlayerHandle, { built: BuiltChapter }
 
   const step = tl[curIndex];
   const stepDone = !playing && frame >= step.to - 2;
-  const label = playing ? "일시정지" : mode === "step" && stepDone ? (curIndex === tl.length - 1 ? "처음부터" : "다음 장면") : "재생";
+  const label = playing ? T.pause : mode === "step" && stepDone ? (curIndex === tl.length - 1 ? T.restart : T.nextScene) : T.play;
 
   return (
     <div>
@@ -123,13 +124,13 @@ export const ScenePlayer = forwardRef<ScenePlayerHandle, { built: BuiltChapter }
       </div>
 
       <div className="controls">
-        <button className="icon-btn" onClick={() => playStep(curIndex - 1)} disabled={curIndex === 0} aria-label="이전 장면">
+        <button className="icon-btn" onClick={() => playStep(curIndex - 1)} disabled={curIndex === 0} aria-label={T.prevScene}>
           <ChevronLeft size={22} />
         </button>
         <button className="icon-btn primary" onClick={toggle} aria-label={label} title={label}>
           {playing ? <Pause size={22} /> : mode === "step" && stepDone ? <ChevronRight size={24} /> : <Play size={22} />}
         </button>
-        <button className="icon-btn" onClick={() => playStep(curIndex + 1)} disabled={curIndex === tl.length - 1} aria-label="다음 장면">
+        <button className="icon-btn" onClick={() => playStep(curIndex + 1)} disabled={curIndex === tl.length - 1} aria-label={T.nextScene}>
           <ChevronRight size={22} />
         </button>
         {HAS_AUDIO && (
@@ -142,31 +143,31 @@ export const ScenePlayer = forwardRef<ScenePlayerHandle, { built: BuiltChapter }
               else p.mute();
               setMuted(!muted);
             }}
-            aria-label={muted ? "소리 켜기" : "소리 끄기"}
+            aria-label={muted ? T.soundOn : T.soundOff}
             aria-pressed={!muted}
-            title={muted ? "소리 켜기" : "소리 끄기"}
+            title={muted ? T.soundOn : T.soundOff}
           >
             {muted ? <VolumeX size={20} /> : <Volume2 size={20} />}
           </button>
         )}
         <span className="spacer" />
-        <div className="seg" role="group" aria-label="보기 방식">
+        <div className="seg" role="group" aria-label={T.viewMode}>
           <button aria-pressed={mode === "step"} onClick={() => setMode("step")}>
-            한 장면씩
+            {T.stepMode}
           </button>
           <button aria-pressed={mode === "video"} onClick={() => setMode("video")}>
-            이어서 보기
+            {T.videoMode}
           </button>
         </div>
       </div>
 
-      <div className="dots" role="group" aria-label="장면 목록">
+      <div className="dots" role="group" aria-label={T.sceneList}>
         {tl.map((s, i) => (
           <button
             key={s.id}
             data-state={i < curIndex ? "done" : i === curIndex ? "now" : "todo"}
             onClick={() => playStep(i)}
-            aria-label={`${i + 1}번째 장면`}
+            aria-label={T.sceneN(i + 1)}
             aria-current={i === curIndex ? "step" : undefined}
           >
             <span />
